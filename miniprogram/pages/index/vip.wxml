@@ -1,0 +1,68 @@
+<view class="line"></view>
+<view class="item">
+   <view class="head">
+      <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
+				<open-data class="avatar-open" type="userAvatarUrl"></open-data>
+			</view>
+     <view class="title">东临天下</view>
+     <view class="hot"><image src="../../images/icon/hot.jpg" style="width:14px;height:16px;"></image>热门</view>
+   </view>
+   
+   <view class="content">
+    在百度实习三个月了，也不知道能不能转正。。。
+手里有一个年包25得保底，
+但是我还是想留在百度这边，
+有没有大佬知道啥时候有转正机会啊？
+
+百度
+   </view>
+   <image src="https://iconfont.alicdn.com/t/ee2c732a-fbde-4f00-9cf7-d49f5ba3a4ff.png"></image>
+    <view class="sta">赞同9362 · 评论320 · 分享 136</view>
+
+</view>
+
+<view class="line"></view>
+
+<view class="item">
+   <view class="head">
+       <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
+				<open-data class="avatar-open" type="userAvatarUrl"></open-data>
+			</view>
+     <view class="title">东临天下</view>
+     <view class="hot"><image src="../../images/icon/hot.jpg" style="width:14px;height:16px;"></image>热门</view>
+   </view>
+  
+   <view class="content">
+    本人22应届生
+在21年暑期实习通过答辩
+阿里意向书签了三个月了
+然后就没下文了…这是啥情况
+求大佬指教
+   </view>
+   <image src="https://iconfont.alicdn.com/t/ee2c732a-fbde-4f00-9cf7-d49f5ba3a4ff.png"></image>
+    <view class="sta">赞同9362 · 评论320 · 分享 136</view>
+
+</view>
+<view class="line"></view>
+
+<view class="item">
+   <view class="head">
+    <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
+				<open-data class="avatar-open" type="userAvatarUrl"></open-data>
+		</view>
+     <view class="title">东临填写</view>
+     <view class="hot"><image src="../../images/icon/hot.jpg" style="width:14px;height:16px;"></image>热门</view>
+   </view>
+  
+   <view class="content">
+    本人22应届生
+在21年暑期实习通过答辩
+阿里意向书签了三个月了
+然后就没下文了…这是啥情况
+求大佬指教
+   </view>
+   <image src="https://iconfont.alicdn.com/t/ee2c732a-fbde-4f00-9cf7-d49f5ba3a4ff.png"></image>
+    <view class="sta">赞同9362 · 评论320 · 分享 136</view>
+
+</view>
+<view class="line"></view>

@@ -1,0 +1,3 @@
+<textarea name="" id="" cols="30" rows="80" placeholder="请输入内容" maxlength="-1" model:value="{{myValue}}"></textarea>
+<button bindtap="CUImage2">选择图片并上传</button>
+<button bindtap="test">输入的值打印</button>
