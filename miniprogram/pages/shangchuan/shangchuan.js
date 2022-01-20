@@ -97,8 +97,15 @@ Page({
         .catch(err => {
           console.error("数据库写入失败", err)
         })}})
-   
-
+        
+      
+        wx.showToast({
+          title: '发布成功',
+          icon:'success',
+          duration:2000
+        })
+  
+      
       },
   /**
    * 生命周期函数--监听页面加载

@@ -63,8 +63,14 @@ Page({
   },
   fabu:function(){
     console.log('gggg');
-    wx.navigateTo({
+    // wx.navigateTo({
+    //   url: '../shangchuan/shangchuan',
+    // })
+    wx.redirectTo({
       url: '../shangchuan/shangchuan',
+      success:function(res){
+       console.log(res)
+      }
     })
   },
   switchNav:function(e){
