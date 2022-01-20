@@ -1,29 +1,33 @@
 <view class="bg">
-   <view class="nav">
-       <scroll-view class="scroll-view_H" scroll-x="true" >
-       <view class="scroll-view_H">
-          <view><view class="{{flag==0?'select':'normal'}}" id="0" bindtap="switchNav" style="width: 100px;">图文内容</view></view>
-          <view><view class="{{flag==1?'select':'normal'}}" id="1" bindtap="switchNav" style="width: 100px;">视频内容</view></view>
+    <view class="nav">
+        <scroll-view class="scroll-view_H" scroll-x="true">
+            <view class="scroll-view_H">
+                <view>
+                    <view class="{{flag==0?'select':'normal'}}" id="0" bindtap="switchNav" style="width: 100px;">图文内容</view>
+                </view>
+                <view>
+                    <view class="{{flag==1?'select':'normal'}}" id="1" bindtap="switchNav" style="width: 100px;">视频内容</view>
+                </view>
 
-       </view>
-  </scroll-view>
-   </view>
+            </view>
+        </scroll-view>
+    </view>
 
-   <view class="add" bindtap="fabu">+</view>
+    <view class="add" bindtap="fabu">+</view>
 
-   
+
 
 
 
 
 </view>
-<swiper current="{{currentTab}}"style="height:1500px">
-  <swiper-item>
-      <include src="vip.wxml"/>
-  </swiper-item>
-  <swiper-item>
-      <include src="video.wxml"/>
-  </swiper-item>
-
+<swiper current="{{currentTab}}" style="height:1800px">
+    <swiper-item>
+        <include src="vip.wxml" />
+    </swiper-item>
+    <swiper-item>
+        <include src="video.wxml" />
+    </swiper-item>
 
 </swiper>
+
