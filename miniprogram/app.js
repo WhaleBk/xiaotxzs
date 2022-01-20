@@ -1,7 +1,14 @@
 const PassportBiz = require('./biz/passport_biz.js'); 
-
+var tuwenxinxi=[""]
 App({
 	onLaunch: function (options) { 
+
+
+
+
+
+
+		
 
 		if (!wx.cloud) {
 			console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -17,7 +24,10 @@ App({
 		}
   
 		this.globalData = {}
+		const DB = wx.cloud.database().collection("tuwenxinxi")
+
 	},
+	
 	/*
 	onShow: function (options) {
 		// 启动，或者从后台进入前台
@@ -27,4 +37,5 @@ App({
 		// 小程序从前台进入后台
 		//GroupBiz.clearGroupShareTicket();
 	}*/
+
 })

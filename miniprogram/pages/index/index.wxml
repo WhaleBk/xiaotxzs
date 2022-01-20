@@ -1,3 +1,4 @@
+<!-- <button bindtap="shuaxin">刷新</button> -->
 <view class="bg">
     <view class="nav">
         <scroll-view class="scroll-view_H" scroll-x="true">
@@ -6,7 +7,7 @@
                     <view class="{{flag==0?'select':'normal'}}" id="0" bindtap="switchNav" style="width: 100px;">图文内容</view>
                 </view>
                 <view>
-                    <view class="{{flag==1?'select':'normal'}}" id="1" bindtap="switchNav" style="width: 100px;">视频内容</view>
+                    <!-- <view class="{{flag==1?'select':'normal'}}" id="1" bindtap="switchNav" style="width: 100px;">视频内容</view> -->
                 </view>
 
             </view>
@@ -25,9 +26,9 @@
     <swiper-item>
         <include src="vip.wxml" />
     </swiper-item>
-    <swiper-item>
+    <!-- <swiper-item>
         <include src="video.wxml" />
-    </swiper-item>
+    </swiper-item> -->
 
 </swiper>
 

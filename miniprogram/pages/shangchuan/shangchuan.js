@@ -98,13 +98,18 @@ Page({
           console.error("数据库写入失败", err)
         })}})
         
+        wx.switchTab({
+          url: '../index/index',
+        })
+  
       
         wx.showToast({
           title: '发布成功',
           icon:'success',
           duration:2000
         })
-  
+
+       
       
       },
   /**
