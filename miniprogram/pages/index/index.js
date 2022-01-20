@@ -170,5 +170,9 @@ Page({
       desc: '这里有搞笑的娱乐段子',
       path: '/index/index'
     }
-  }
+  },
+  lower(){
+    console.log('hhh')
+    wx.stopPullDownRefresh();
+  } 
 })

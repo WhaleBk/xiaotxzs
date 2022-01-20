@@ -1,4 +1,4 @@
-<scroll-view current="{{currentTab}}" scroll-y="true" style="height: 100%;">
+<scroll-view current="{{currentTab}}" scroll-y="true" style="height: 100%;" bindscrolltolower="lower">
     <block wx:for="{{tuwenxinxi}}">
         <view class="item">
 
