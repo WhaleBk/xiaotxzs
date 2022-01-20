@@ -1,3 +1,7 @@
-<textarea name="" id="" cols="30" rows="80" placeholder="请输入内容" maxlength="-1" model:value="{{myValue}}"></textarea>
-<button bindtap="CUImage2">选择图片并上传</button>
-<button bindtap="test">输入的值打印</button>
+<textarea style="height: 250px;" name="" id="" cols="30" rows="80" placeholder="请输入内容" maxlength="-1" model:value="{{myValue}}"></textarea>
+<view style="background-color: wheat;height: 250px;"><image style="height: 250px;" src="{{imgurl}}"></image></view>
+<button type="primary" bindtap="CUImage2">选择图片</button>
+<button  type="primary" bindtap="CUImage1">发布</button>
+
+
+<!-- <button bindtap="test">打印</button> -->

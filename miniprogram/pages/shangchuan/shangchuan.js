@@ -1,44 +1,34 @@
-// pages/shangchuan/shangchuan.js
 
 
+var imgurl=''
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    myValue: 0,
-    value:10
+    myValue:''
   },
   test:function(){
-    console.log(this.data.myValue);
+  
+    console.log(this.data.myValue)
   },
+ 
   CUImage2() {
-    var that = this //创建一个名为that的变量来保存this当前的值  
-    wx.request({  
-       url: '',  
-       method: 'post',  
-       data: {  
-         openid: 'openid'  ,//这里是发送给服务器的参数（参数名：参数值）  
-         Text:'hahahaahahaha'
-       },  
-       header: {  
-         'content-type': 'application/x-www-form-urlencoded'  //这里注意POST请求content-type是小写，大写会报错  
-       },  
-       success: function (res) {  
-         that.setData({ //这里是修改data的值  
-           test: res.data //test等于服务器返回来的数据  
-         });  
-         console.log(res.data)  
-       }  
-   });  
-    
+    const content=this.data.myValue
+    console.log(content)
+    // console.log(this.data.myValue)
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       success: res=> {
-        const filePath = res.tempFilePaths[0]
+        var filePath = res.tempFilePaths[0]
+            this.setData({
+             
+              imgurl:filePath 
+            })
+          
         const cloudPath = `index/${Date.now()}-${Math.floor(Math.random(0,1)*1000)}`+filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
           cloudPath,
@@ -49,26 +39,30 @@ Page({
             const name = `index-${Date.now()}-${Math.floor(Math.random(0,1)*1000)}`+filePath.match(/\.[^.]+?$/)[0]
             const fileID = res.fileID
             this.setData({
-              fileID:fileID
+              fileID:fileID,
+              imgurl:fileID
             })
-            db.collection('index').add({
+            db.collection('tuwenxinxi').add({
               data: {
                 name: name,
-                fileID: fileID,
+                content: content,
+                imgurl: fileID,
               }
             })
             .then(result => {
               console.log("数据库写入成功", result)
+              
             })
             .catch(err => {
               console.error("数据库写入失败", err)
-            })
+            })}})
           },
         })
       },
-    })
-  },
   
+
+       
+      
   /**
    * 生命周期函数--监听页面加载
    */
