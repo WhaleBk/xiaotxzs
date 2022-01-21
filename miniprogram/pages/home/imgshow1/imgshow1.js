@@ -102,7 +102,7 @@ getFiles() {
       {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image1-10.jpg"},
       {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image1-11.jpg"},
       {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image1-12.jpg"},
-      {imgurl:"cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image2/1642587367871-818.jpg"},
+      
   
     ],
     fileID:"",

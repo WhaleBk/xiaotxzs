@@ -34,7 +34,7 @@
 
   <view  class="form-group">
 		 <view class="title">*生日</view>
-		 <picker name="birth" mode="date" start="1950-01-01" end="2012-12-30" model:value="{{formBirth}}">
+		 <picker name="birth" mode="date" start="1950-01-01" end="2025-12-30" model:value="{{formBirth}}">
 					<view class="picker">
 						{{formBirth || '年,月,日'}}
 					</view>

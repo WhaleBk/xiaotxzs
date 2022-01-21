@@ -27,6 +27,7 @@
 
 			<view class="detail" wx:if="{{!user.USER_NAME}}" bindtap="url" data-url="/pages/reg/reg_step1">
 				<open-data type="userNickName" class="name"></open-data>
+			
 				<view class="desc"><view class="text-white">欢迎使用校通讯助手~~~</view></view>
 			</view>
 		</view> 
@@ -69,6 +70,7 @@
 				<view class="content">
 					<text class="icon-newshotfill item-icon text-green"></text>
 					<text class="text-black">我发布的互助</text>
+					
 				</view>
 			</view>
 
@@ -77,7 +79,7 @@
 			<view class="item arrow" bindtap="url" data-url="/pages/my/album/my_album">
 				<view class="content">
 					<text class="icon-picfill item-icon text-orange"></text>
-					<text class="text-black">我发布的相册</text>
+					<text class="text-black">我上传的相册</text>
 				</view>
 			</view>
 

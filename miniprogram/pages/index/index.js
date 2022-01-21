@@ -7,6 +7,7 @@ Page({
   data: {
     currentTab: 0,
     flag: 0,
+    
 
     tuwenxinxi: []
 
@@ -90,6 +91,7 @@ Page({
 
   },
   onLoad: function (options) {
+ 
 
     // var that=this
     // DB.get({

@@ -1,37 +1,38 @@
-
-var filePath=''
+var filePath = ''
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    myValue:'',
-    imgurl:''
+    myValue: '',
+    imgurl: '',
+    openid: '0000000',
+    yonghuxinxi: []
   },
-  test:function(){
-  
+  test: function () {
+
     console.log(this.data.myValue)
-   
+
     console.log(this.data.imgurl)
   },
- 
+
   CUImage2() {
-    const content=this.data.myValue
+    const content = this.data.myValue
     console.log(content)
     // console.log(this.data.myValue)
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
-      success: res=> {
-         filePath = res.tempFilePaths[0]
-            this.setData({
-             
-              imgurl:filePath 
-            })
-         
-         
+      success: res => {
+        filePath = res.tempFilePaths[0]
+        this.setData({
+
+          imgurl: filePath
+        })
+
+
         // const cloudPath = `index/${Date.now()}-${Math.floor(Math.random(0,1)*1000)}`+filePath.match(/\.[^.]+?$/)[0]
         // wx.cloud.uploadFile({
         //   cloudPath,
@@ -54,68 +55,106 @@ Page({
         //     })
         //     .then(result => {
         //       console.log("数据库写入成功", result)
-              
+
         //     })
         //     .catch(err => {
         //       console.error("数据库写入失败", err)
         //     })}})
-          },
-        })
       },
-  
-       
-      
+    })
+  },
+
+
+
   CUImage1() {
-    const content=this.data.myValue
+    const content = this.data.myValue
     console.log(content)
-    const filePath=this.data.imgurl
+    const filePath = this.data.imgurl
     console.log(filePath)
-    const cloudPath = `index/${Date.now()}-${Math.floor(Math.random(0,1)*1000)}`+filePath.match(/\.[^.]+?$/)[0]
+    const cloudPath = `index/${Date.now()}-${Math.floor(Math.random(0,1)*1000)}` + filePath.match(/\.[^.]+?$/)[0]
     wx.cloud.uploadFile({
       cloudPath,
       filePath,
       success: res => {
         console.log("云存储上传成功", res)
         const db = wx.cloud.database()
-        const name = `index-${Date.now()}-${Math.floor(Math.random(0,1)*1000)}`+filePath.match(/\.[^.]+?$/)[0]
+        const name = `index-${Date.now()}-${Math.floor(Math.random(0,1)*1000)}` + filePath.match(/\.[^.]+?$/)[0]
         const fileID = res.fileID
         this.setData({
-          fileID:fileID,
-          imgurl:fileID
+          fileID: fileID,
+          imgurl: fileID
         })
         db.collection('tuwenxinxi').add({
-          data: {
-            name: name,
-            content: content,
-            imgurl: fileID,
-          }
-        })
-        .then(result => {
-          console.log("数据库写入成功", result)
-          
-        })
-        .catch(err => {
-          console.error("数据库写入失败", err)
-        })}})
-        
-        wx.switchTab({
-          url: '../index/index',
-        })
-  
-      
-        wx.showToast({
-          title: '发布成功',
-          icon:'success',
-          duration:2000
-        })
+            data: {           
+              name: this.data.yonghuxinxi[0].name,
+              touxiang:this.data.yonghuxinxi[0].imgurl,
+              content: content,
+              imgurl: fileID,
+            }
+          })
+          .then(result => {
+            console.log("数据库写入成功", result)
 
-       
-      
-      },
+          })
+          .catch(err => {
+            console.error("数据库写入失败", err)
+          })
+      }
+    })
+
+    wx.switchTab({
+      url: '../index/index',
+    })
+
+
+    wx.showToast({
+      title: '发布成功',
+      icon: 'success',
+      duration: 2000
+    })
+
+
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //云函数调用
+    wx.cloud.callFunction({
+      name: 'helloCloud',
+      data: {
+        message: 'helloCloud',
+      }
+    }).then(res => {
+      console.log(this.data.openid)
+      console.log('hhhhhh')
+      console.log(res.result.openid)
+      this.setData({
+        openid: res.result.openid
+      })
+
+      console.log(this.data.openid)
+      //res就将appid和openid返回了
+      //做一些后续操作，不用考虑代码的异步执行问题。
+      let that = this
+      wx.cloud.callFunction({
+        name: "getList2",
+        success(res) {
+          console.log("请求云函数成功", res)
+          that.setData({
+            yonghuxinxi: res.result.data
+          })
+          console.log('ppppp')
+          console.log(that.data.yonghuxinxi)
+          console.log(res.result.data)
+        },
+        fail(res) {
+          console.log("请求云函数失败", res)
+        }
+
+      })
+    })
 
   },
 
