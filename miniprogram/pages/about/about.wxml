@@ -1,20 +1,21 @@
 <view class="main main-about main-{{skin}}">
 	<view class="main-content">
 		<view class="content shadow">
-			<view class="title text-darkgreen color-{{skin}}">关于CC校友录Free版</view>
+			<view class="title text-darkgreen color-{{skin}}">关于“聚鲸汇海小队”实践作品</view>
 			<view class="txt"><text selectable="true text-content"> 
-						CC校友录小程序 是一个采用微信小程序和腾讯云开发技术构建的高效校友录解决方案。
+						校通讯助手 是一个采用微信小程序和腾讯云开发技术构建的高效校友录解决方案。
 							
 						使用腾讯云开发技术，免费资源配额，无需域名和服务器即可搭建.
 						
 						小程序在微信里打开，无须下载app，也无须再访问传统的PC站点，随时随地可以和互动.
+
+						主要面向学校小范围群体服务
 					 
 				</text></view>
 
 				<view class="txt"><text selectable="true text-content"> 
-						作者主页:  http://www.code942.com
-						作者微信:  cclinux0730 
-						
+						小队成员:  赵雨婷 赵雨晴 张靖宇 蒙文鸿 何成泽
+						指导教师： 于明媚
 				</text></view>
 		</view>
 

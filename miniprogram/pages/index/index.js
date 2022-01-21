@@ -1,16 +1,15 @@
-
 const DB = wx.cloud.database().collection("tuwenxinxi")
 
 
 
 
 Page({
-  data:{
-    currentTab:0,
-    flag:0,
-   
-    tuwenxinxi:[]
-    
+  data: {
+    currentTab: 0,
+    flag: 0,
+
+    tuwenxinxi: []
+
 
 
 
@@ -29,35 +28,35 @@ Page({
 
 
     // tuwenxinxi: [
-      // {
-      //   name: '张三',
-      //   content: '新华社南京1月20日电（记者王珏玢）2亿年前，一场生物大灭绝让超过一半地球生物消失。这场进化史上的“浩劫”因何而来？近日，中国地质大学（武汉）、中科院南京地质古生物研究所领导的国际团队发现了有力证据，表明火山爆发是当时环境剧变和物种灭绝的主要原因。相关成果已于近日发表在国际权威期刊《自然·通讯》上。参与此次研究的中科院南古所研究员王永栋介绍，2亿年前的三叠纪-侏罗纪之交大灭绝是地球历史上的5次生物大灭绝之一。几十年来，科学家对这次灭绝的原因提出了各种推测，火山爆发被认为是重要诱因，但它的影响有多大一直难有定论。',
-      //   imgurl:'cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image1/1642587260256-954.jpg',
-      // },
-      // {
-      //   name: '李四',
-      //   content: '新华社南京1月20日电（记者王珏玢）2亿年前，一场生物大灭绝让超过一半地球生物消失。这场进化史上的“浩劫”因何而来？近日，中国地质大学（武汉）、中科院南京地质古生物研究所领导的国际团队发现了有力证据，表明火山爆发是当时环境剧变和物种灭绝的主要原因。相关成果已于近日发表在国际权威期刊《自然·通讯》上。参与此次研究的中科院南古所研究员王永栋介绍，2亿年前的三叠纪-侏罗纪之交大灭绝是地球历史上的5次生物大灭绝之一。几十年来，科学家对这次灭绝的原因提出了各种推测，火山爆发被认为是重要诱因，但它的影响有多大一直难有定论。',
-      //   imgurl:'cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image1/1642587260256-954.jpg',
-      // },
-      // {
-      //   name: '李四',
-      //   content: '新华社南京1月20日电（记者王珏玢）2亿年前，一场生物大灭绝让超过一半地球生物消失。这场进化史上的“浩劫”因何而来？近日，中国地质大学（武汉）、中科院南京地质古生物研究所领导的国际团队发现了有力证据，表明火山爆发是当时环境剧变和物种灭绝的主要原因。相关成果已于近日发表在国际权威期刊《自然·通讯》上。参与此次研究的中科院南古所研究员王永栋介绍，2亿年前的三叠纪-侏罗纪之交大灭绝是地球历史上的5次生物大灭绝之一。几十年来，科学家对这次灭绝的原因提出了各种推测，火山爆发被认为是重要诱因，但它的影响有多大一直难有定论。',
-      //   imgurl:'cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image1/1642587260256-954.jpg',
-      // },
-      // {
-      //   name: '李四',
-      //   content: '新华社南京1月20日电（记者王珏玢）2亿年前，一场生物大灭绝让超过一半地球生物消失。这场进化史上的“浩劫”因何而来？近日，中国地质大学（武汉）、中科院南京地质古生物研究所领导的国际团队发现了有力证据，表明火山爆发是当时环境剧变和物种灭绝的主要原因。相关成果已于近日发表在国际权威期刊《自然·通讯》上。参与此次研究的中科院南古所研究员王永栋介绍，2亿年前的三叠纪-侏罗纪之交大灭绝是地球历史上的5次生物大灭绝之一。几十年来，科学家对这次灭绝的原因提出了各种推测，火山爆发被认为是重要诱因，但它的影响有多大一直难有定论。',
-      //   imgurl:'cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image1/1642587260256-954.jpg',
-      // },
-      // {
-      //   name: '李四',
-      //   content: '新华社南京1月20日电（记者王珏玢）2亿年前，一场生物大灭绝让超过一半地球生物消失。这场进化史上的“浩劫”因何而来？近日，中国地质大学（武汉）、中科院南京地质古生物研究所领导的国际团队发现了有力证据，表明火山爆发是当时环境剧变和物种灭绝的主要原因。相关成果已于近日发表在国际权威期刊《自然·通讯》上。参与此次研究的中科院南古所研究员王永栋介绍，2亿年前的三叠纪-侏罗纪之交大灭绝是地球历史上的5次生物大灭绝之一。几十年来，科学家对这次灭绝的原因提出了各种推测，火山爆发被认为是重要诱因，但它的影响有多大一直难有定论。',
-      //   imgurl:'cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image1/1642587230836-864.jpg',
-      // }
+    // {
+    //   name: '张三',
+    //   content: '新华社南京1月20日电（记者王珏玢）2亿年前，一场生物大灭绝让超过一半地球生物消失。这场进化史上的“浩劫”因何而来？近日，中国地质大学（武汉）、中科院南京地质古生物研究所领导的国际团队发现了有力证据，表明火山爆发是当时环境剧变和物种灭绝的主要原因。相关成果已于近日发表在国际权威期刊《自然·通讯》上。参与此次研究的中科院南古所研究员王永栋介绍，2亿年前的三叠纪-侏罗纪之交大灭绝是地球历史上的5次生物大灭绝之一。几十年来，科学家对这次灭绝的原因提出了各种推测，火山爆发被认为是重要诱因，但它的影响有多大一直难有定论。',
+    //   imgurl:'cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image1/1642587260256-954.jpg',
+    // },
+    // {
+    //   name: '李四',
+    //   content: '新华社南京1月20日电（记者王珏玢）2亿年前，一场生物大灭绝让超过一半地球生物消失。这场进化史上的“浩劫”因何而来？近日，中国地质大学（武汉）、中科院南京地质古生物研究所领导的国际团队发现了有力证据，表明火山爆发是当时环境剧变和物种灭绝的主要原因。相关成果已于近日发表在国际权威期刊《自然·通讯》上。参与此次研究的中科院南古所研究员王永栋介绍，2亿年前的三叠纪-侏罗纪之交大灭绝是地球历史上的5次生物大灭绝之一。几十年来，科学家对这次灭绝的原因提出了各种推测，火山爆发被认为是重要诱因，但它的影响有多大一直难有定论。',
+    //   imgurl:'cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image1/1642587260256-954.jpg',
+    // },
+    // {
+    //   name: '李四',
+    //   content: '新华社南京1月20日电（记者王珏玢）2亿年前，一场生物大灭绝让超过一半地球生物消失。这场进化史上的“浩劫”因何而来？近日，中国地质大学（武汉）、中科院南京地质古生物研究所领导的国际团队发现了有力证据，表明火山爆发是当时环境剧变和物种灭绝的主要原因。相关成果已于近日发表在国际权威期刊《自然·通讯》上。参与此次研究的中科院南古所研究员王永栋介绍，2亿年前的三叠纪-侏罗纪之交大灭绝是地球历史上的5次生物大灭绝之一。几十年来，科学家对这次灭绝的原因提出了各种推测，火山爆发被认为是重要诱因，但它的影响有多大一直难有定论。',
+    //   imgurl:'cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image1/1642587260256-954.jpg',
+    // },
+    // {
+    //   name: '李四',
+    //   content: '新华社南京1月20日电（记者王珏玢）2亿年前，一场生物大灭绝让超过一半地球生物消失。这场进化史上的“浩劫”因何而来？近日，中国地质大学（武汉）、中科院南京地质古生物研究所领导的国际团队发现了有力证据，表明火山爆发是当时环境剧变和物种灭绝的主要原因。相关成果已于近日发表在国际权威期刊《自然·通讯》上。参与此次研究的中科院南古所研究员王永栋介绍，2亿年前的三叠纪-侏罗纪之交大灭绝是地球历史上的5次生物大灭绝之一。几十年来，科学家对这次灭绝的原因提出了各种推测，火山爆发被认为是重要诱因，但它的影响有多大一直难有定论。',
+    //   imgurl:'cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image1/1642587260256-954.jpg',
+    // },
+    // {
+    //   name: '李四',
+    //   content: '新华社南京1月20日电（记者王珏玢）2亿年前，一场生物大灭绝让超过一半地球生物消失。这场进化史上的“浩劫”因何而来？近日，中国地质大学（武汉）、中科院南京地质古生物研究所领导的国际团队发现了有力证据，表明火山爆发是当时环境剧变和物种灭绝的主要原因。相关成果已于近日发表在国际权威期刊《自然·通讯》上。参与此次研究的中科院南古所研究员王永栋介绍，2亿年前的三叠纪-侏罗纪之交大灭绝是地球历史上的5次生物大灭绝之一。几十年来，科学家对这次灭绝的原因提出了各种推测，火山爆发被认为是重要诱因，但它的影响有多大一直难有定论。',
+    //   imgurl:'cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image1/1642587230836-864.jpg',
+    // }
     // ],
 
-    
-   
+
+
 
 
 
@@ -88,79 +87,98 @@ Page({
     //     videourl:'http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400',
     //   }
     // ],
-   
+
   },
   onLoad: function (options) {
-  
-    var that=this
-    DB.get({
 
-      success(res){
-        
-        console.log(res)
-        console.log(that.data.tuwenxinxi)
-        that.data.tuwenxinxi=res.data
-        console.log(res)
-        console.log(that.data.tuwenxinxi)
+    // var that=this
+    // DB.get({
+
+    //   success(res){
+
+    //     console.log(res)
+    //     console.log(that.data.tuwenxinxi)
+    //     that.data.tuwenxinxi=res.data
+    //     console.log(res)
+    //     console.log(that.data.tuwenxinxi)
 
 
-        that.setData(
-          {
-            tuwenxinxi:res.data.reverse(),
-           
-            
-          },
-         
-        );
-           
-      }
-      
+    //     that.setData(
+    //       {
+    //         tuwenxinxi:res.data.reverse(),
+
+
+    //       },
+
+    //     );
+
+    //   }
+
+
+
+    // })
     
+    let that = this
+    wx.cloud.callFunction({
+      name: "getList",
+      success(res) {
+        console.log("请求云函数成功", res)
+        that.setData({
+          tuwenxinxi:res.result.data.reverse(),
+        })
+      },
+      fail(res) {
+        console.log("请求云函数失败", res)
+      }
 
     })
 
   },
   shuaxin: function (options) {
-  
-    var that=this
+
+    var that = this
     DB.get({
 
-      success(res){
-        
+      success(res) {
+
         console.log(res)
         console.log(that.data.tuwenxinxi)
-        that.data.tuwenxinxi=res.data
+        that.data.tuwenxinxi = res.data
         console.log(res)
         console.log(that.data.tuwenxinxi)
-           
+
       }
-    
+
 
     })
 
   },
-  fabu:function(){
+  fabu: function () {
     console.log('gggg');
     // wx.navigateTo({
     //   url: '../shangchuan/shangchuan',
     // })
     wx.redirectTo({
       url: '../shangchuan/shangchuan',
-      success:function(res){
-       console.log(res)
+      success: function (res) {
+        console.log(res)
       }
     })
   },
-  switchNav:function(e){
+  switchNav: function (e) {
     console.log(e);
     var page = this;
     var id = e.target.id;
-    if(this.data.currentTab == id){
-       return false;
-    }else{
-      page.setData({currentTab:id});
+    if (this.data.currentTab == id) {
+      return false;
+    } else {
+      page.setData({
+        currentTab: id
+      });
     }
-    page.setData({flag:id});
+    page.setData({
+      flag: id
+    });
   },
   onShareAppMessage: function () {
     return {
@@ -169,8 +187,8 @@ Page({
       path: '/index/index'
     }
   },
-  lower(){
+  lower() {
     console.log('hhh')
     wx.stopPullDownRefresh();
-  } 
+  }
 })

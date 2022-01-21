@@ -2,7 +2,9 @@
 	"pages": [ 
 		
 		"pages/my/index/my_index",
+		"pages/logs/logs",
 		"pages/my/base/my_base",
+		"pages/about/about",
 		"pages/index/shuangchuan",
 		"pages/home/home",
 		"pages/index/index",

@@ -26,7 +26,7 @@
 			</view> -->
 
 			<view class="detail" wx:if="{{!user.USER_NAME}}" bindtap="url" data-url="/pages/reg/reg_step1">
-				<view class="name">登录</view> 
+				<open-data type="userNickName" class="name"></open-data>
 				<view class="desc"><view class="text-white">欢迎使用校通讯助手~~~</view></view>
 			</view>
 		</view> 
@@ -48,7 +48,7 @@
 			<view class="item arrow" bindtap="gerenziliao" data-url="/pages/my/base/my_base">
 				<view class="content">
 					<text class="icon-myfill item-icon text-olive"></text>
-					<text class="text-black">个人资料</text>
+					<text class="text-black">资料注册</text>
 				</view>
 			</view>
 
@@ -103,7 +103,7 @@
 				</button>
 			</view>
 
-			<view class="item arrow" bindtap="url" data-url="/pages/about/about">
+			<view class="item arrow" bindtap="gywm" data-url="/pages/about/about">
 				<view class="content">
 					<text class="icon-infofill item-icon text-green"></text>
 					<text class="text-black">关于我们</text>
@@ -123,7 +123,7 @@
 	</view>
 	<!--down area end-->
 
-	<!-- <view class="site-footer">
+	<view class="site-footer">
 		<view class="link">
 		 
 			<view bindtap="url" data-url="/pages/about/about">关于我们</view>
@@ -131,7 +131,7 @@
 			<button class="clearbtn" open-type="contact">联系客服</button>
 		</view>
 		<view class="info">Copyright © {{setup.SETUP_TITLE}} 版权所有</view>
-	</view> -->
+	</view>
 	
 </view>
 

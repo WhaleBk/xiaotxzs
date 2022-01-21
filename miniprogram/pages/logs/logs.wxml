@@ -1,0 +1,19 @@
+<view wx:if="{{isHide}}">
+ <view wx:if="{{canIUse}}" >
+  <view class='header'>
+   <image src='cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/index/微信图片_20220121174215.jpg'></image>
+  </view>
+ 
+  <view class='content'>
+   <view>申请获取以下权限</view>
+   <text>获得你的公开信息(昵称，头像等)</text>
+  </view>
+ 
+  <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+   授权登录
+  </button>
+ </view>
+ <view wx:else>请升级微信版本</view>
+</view>
+ 
+<view wx:else></view>
