@@ -13,7 +13,11 @@ Page({
 	data: {
 		user: null
 	},
-
+gerenziliao(){
+	wx.navigateTo({
+		url: '../base/my_base',
+	})
+},
 	/**
 	 * 生命周期函数--监听页面加载
 	 */

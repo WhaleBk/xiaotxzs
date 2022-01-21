@@ -2,6 +2,7 @@
 	"pages": [ 
 		
 		"pages/my/index/my_index",
+		"pages/my/base/my_base",
 		"pages/index/shuangchuan",
 		"pages/home/home",
 		"pages/index/index",

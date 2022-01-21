@@ -110,9 +110,7 @@ Page({
            
             
           },
-          () => {
-            wx.stopPullDownRefresh();
-          }
+         
         );
            
       }
