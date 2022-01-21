@@ -106,7 +106,7 @@ Page({
 
         that.setData(
           {
-            tuwenxinxi:res.data,
+            tuwenxinxi:res.data.reverse(),
            
             
           },
