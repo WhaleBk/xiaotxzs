@@ -55,14 +55,14 @@ Page({
       .catch(err => {
         console.error("数据库写入失败", err)
       })}})
-      
+      console.log('hh')
       wx.switchTab({
-        url: '../index/index',
+        url: '../../my/index/my_index',
       })
 
     
       wx.showToast({
-        title: '发布成功',
+        title: '提交成功',
         icon:'success',
         duration:2000
       })
