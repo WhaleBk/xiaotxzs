@@ -7,7 +7,9 @@
             <!-- 轮播图图片 -->
             <swiper-item class="bbs-swiper-item" wx:for="{{tuwenxinxi}}" wx:key="index">
                 <!-- 加上widthFix可以使图片自适应 -->
-                <image src="{{item.imgurl}}"></image>
+                <!-- <image src="{{item.imgurl[0]}}"></image> -->
+                <image src="{{item.imgurl[1]}}"></image>
+                <!-- <image src="{{item.imgurl[2]}}"></image> -->
             </swiper-item>
         </swiper>
         <!-- 定制轮播图dots -->

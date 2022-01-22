@@ -69,7 +69,7 @@
 			<view class="item arrow" bindtap="url" data-url="/pages/my/info/my_info">
 				<view class="content">
 					<text class="icon-newshotfill item-icon text-green"></text>
-					<text class="text-black">我发布的互助</text>
+					<text class="text-black">我发布的信息</text>
 					
 				</view>
 			</view>

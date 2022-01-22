@@ -12,16 +12,16 @@ Page({
       color: '#1890FF',
       tabColor: '#333' || '#20ACAB',
     },
-    topic:{
-      sorts:
-      ["闲置交易", "表白交友", "疑问互答", "任务兼职",
-    "相约学习", "实物招领", "趣事分享"],
-    selected:0
+    topic: {
+      sorts: ["闲置交易", "表白交友", "疑问互答", "任务兼职",
+        "相约学习", "实物招领", "趣事分享"
+      ],
+      selected: 0
     },
-    content:"",
-   
+    content: "",
+
     imageList: [],
-    
+
     anonymous: false,
 
 
@@ -37,36 +37,42 @@ Page({
 
     console.log(this.data.imgurl)
   },
-  
+
   // 清空照片或者图片
-  clearInput: function(name){
+  clearInput: function (name) {
     if (name != 'imageList') {
-      this.setData({ imageList: [] })
+      this.setData({
+        imageList: []
+      })
     }
     if (name != 'video') {
-      this.setData({ video: {} })
+      this.setData({
+        video: {}
+      })
     }
   },
 
   // 选择照片
-  chooseImage: function(e){
+  chooseImage: function (e) {
     var that = this;
     let surplus = 9 - this.data.imageList.length
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
-      success: function(res){
+      success: function (res) {
         that.clearInput("imageList");
         that.addNewImage(res.tempFilePaths);
         wx.showToast({
           title: '上传成功！',
         })
+
+        console.log(that.data.imageList)
       }
     })
   },
 
-  addNewImage(imagePath){
+  addNewImage(imagePath) {
     var list = this.data.imageList
     list = list.concat(imagePath)
     this.setData({
@@ -74,7 +80,7 @@ Page({
     })
   },
 
-  thisImage:function(e){
+  thisImage: function (e) {
     let index = e.currentTarget.dataset.imageid;
     let list = this.data.imageList;
     wx.previewImage({
@@ -83,7 +89,7 @@ Page({
     })
   },
 
-  deleteImage: function(e){
+  deleteImage: function (e) {
     let index = e.currentTarget.dataset.imageid;
     let list = this.data.imageList;
     list.splice(index, 1)
@@ -91,9 +97,9 @@ Page({
       imageList: list
     })
   },
-  
+
   // 发布的类型
-  clickTag:function(e){
+  clickTag: function (e) {
     // var that=this;
     // console.log(e.target.dataset.topicid) ;
     // console.log(that.data.topic.sorts) ;
@@ -103,7 +109,7 @@ Page({
 
     // console.log(e.target.dataset.topicid) ;
     // console.log(this.data.topic.sorts) ;
-    console.log(this.data.topic.sorts[e.target.dataset.topicid]) ;
+    console.log(this.data.topic.sorts[e.target.dataset.topicid]);
     console.log(this.data.imageList)
     let topicId = e.target.dataset.topicid;
     let topic = this.data.topic;
@@ -164,52 +170,59 @@ Page({
 
 
   CUImage1() {
-    for(let i=0;i<this.data.imageList.length;i++){
+    for (let i = 0; i < this.data.imageList.length; i++) {
 
       const content = this.data.myValue
-    console.log(content)
-    // const filePath = this.data.imgurl
-    const filePath = this.data.imageList[i]
-    console.log(filePath)
-    const cloudPath = `index/${Date.now()}-${Math.floor(Math.random(0,1)*1000)}` + filePath.match(/\.[^.]+?$/)[0]
-    wx.cloud.uploadFile({
-      cloudPath,
-      filePath,
-      success: res => {
-        console.log("云存储上传成功", res)
-        const db = wx.cloud.database()
-        const name = `index-${Date.now()}-${Math.floor(Math.random(0,1)*1000)}` + filePath.match(/\.[^.]+?$/)[0]
-        const fileID = res.fileID
-        this.setData({
-          fileID: fileID,
-          // imgurl: fileID
-         
-        })
-        this.data.imageList[i]=fileID
-        
-        if(i==this.data.imageList.length-1){
-          console.log('开始传向数据库');
-          db.collection('tuwenxinxi').add({
-            data: {           
-              name: this.data.yonghuxinxi[0].name,
-              touxiang:this.data.yonghuxinxi[0].imgurl,
-              content: content,
-              imgurl: this.data.imageList,
-            }
-          })
-          .then(result => {
-            console.log("数据库写入成功", result)
+      console.log(content)
+      // const filePath = this.data.imgurl
+      const filePath = this.data.imageList[i]
+      console.log(filePath)
+      const cloudPath = `index/${Date.now()}-${Math.floor(Math.random(0,1)*1000)}` + filePath.match(/\.[^.]+?$/)[0]
+      wx.cloud.uploadFile({
+        cloudPath,
+        filePath,
+        success: res => {
+          console.log("云存储上传成功", res)
+          const db = wx.cloud.database()
+          const name = `index-${Date.now()}-${Math.floor(Math.random(0,1)*1000)}` + filePath.match(/\.[^.]+?$/)[0]
+          const fileID = res.fileID
+          this.setData({
+            fileID: fileID,
+            // imgurl: fileID
 
           })
-          .catch(err => {
-            console.error("数据库写入失败", err)
-          })
+          this.data.imageList[i] = fileID
+
+          console.log(this.data.imageList)
+          setTimeout(function ()
+            {
+            }, 1500);
+
+
+          if (i == this.data.imageList.length - 1) {
+            console.log('开始传向数据库');
+            console.log(this.data.imageList)
+            db.collection('tuwenxinxi').add({
+                data: {
+                  name: this.data.yonghuxinxi[0].name,
+                  touxiang: this.data.yonghuxinxi[0].imgurl,
+                  content: content,
+                  imgurl: this.data.imageList,
+                }
+              })
+              .then(result => {
+                console.log("数据库写入成功", result)
+
+              })
+              .catch(err => {
+                console.error("数据库写入失败", err)
+              })
+          }
+
+
+
         }
-
-
-
-      }
-    })
+      })
 
 
     }
