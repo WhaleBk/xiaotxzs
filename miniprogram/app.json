@@ -1,4 +1,5 @@
 {
+	
 	"pages": [ 
 	
 		"pages/my/index/my_index",
@@ -23,6 +24,7 @@
 		
 	],
 	"window": {
+		"enablePullDownRefresh": true,
 		"backgroundColor": "#f1f1f1",
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#1cbbb4",
@@ -56,4 +58,5 @@
 		]
 	},
 	"sitemapLocation": "sitemap.json"
+	
 }

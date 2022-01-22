@@ -53,7 +53,7 @@ Page({
     var that = this;
     let surplus = 9 - this.data.imageList.length
     wx.chooseImage({
-      count: surplus,
+      count: 1,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       success: function(res){
