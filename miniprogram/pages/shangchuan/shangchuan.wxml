@@ -1,7 +1,55 @@
-<textarea style="height: 250px;width: 100%;" name="" id="" cols="30" rows="80" placeholder="在此输入内容,发布前请进行资料注册，完善信息" maxlength="-1" model:value="{{myValue}}"></textarea>
-<view style="background-color: wheat;height: 250px;"><image style="height: 250px;" src="{{imgurl}}"></image></view>
-<button type="primary" bindtap="CUImage2">选择图片</button>
-<button  type="primary" bindtap="CUImage1">发布</button>
+<!--pages/article/article.wxml-->
+<view class="content" style="margin-top:{{navH*4+40}}rpx">
+  <view class="content-input">
+
+    <!-- 文本输入框 -->
+    <view>
+      <textarea class='text-input' autofocus bindinput="bindContent" maxlength='2000' model:value="{{myValue}}" placeholder="在此输入内容,发布前请进行资料注册，完善信息" auto-height='{{true}}' />
+    </view>
+
+    <image src="../../images/send/photo.png" style="height: 40px;width: 40px;" bindtap="chooseImage"></image>
 
 
-<!-- <button bindtap="test">打印</button> -->
+
+    <!-- 对于上传后的照片加以显示，可删除和添加 -->
+    <view class="image-list" wx:if="{{imageList.length > 0}}">
+      <view class="showImage box" wx:for="{{imageList}}" wx:key="item">
+        <view class="delete">
+          <image src="../../images/send/del.png" data-imageId="{{index}}" bindtap="deleteImage" />
+        </view>
+        <image src="{{item}}" mode="aspectFill" data-imageId="{{index}}" bindtap="thisImage" />
+      </view>
+      <view class="addImage" wx:if="{{imageList.length < 9}}">
+        <image bindtap="chooseImage" src="../../images/send/plus.png" />
+      </view>
+    </view>
+
+
+      <!-- 板块选择 -->
+      <view wx:if="{{topic.sorts && topic.sorts.length > 0}}">
+        <view class="line"></view>
+        <view class="tag-title">选择类型</view>
+        <scroll-view scroll-x scroll-with-animation enable-flex="true" class="tag-list">
+          <view class="tag" bindtap="clickTag" data-topicId="{{index}}" style="{{index == topic.selected? 'color:' +theme.tabColor+ ';border-color:'+theme.tabColor:''}}" wx:for="{{topic.sorts}}" wx:key="index">{{item}}</view>
+        </scroll-view>
+      </view>
+
+   
+
+  </view>
+
+  <!-- 文本输入框 -->
+  <!-- <view>
+  <textarea class='text-input' autofocus bindinput="bindContent" maxlength='200'  auto-height='{{true}}' textarea/>
+</view> -->
+  <!-- 
+<view style="background-color: wheat;height: 250px;">
+  <image style="height: 250px;" src="{{imgurl}}"></image>
+</view> -->
+  <!-- <button type="primary" bindtap="CUImage2">选择图片</button> -->
+  <button type="primary" bindtap="CUImage1">发布</button>
+
+
+  <!-- <button bindtap="test">打印</button> -->
+
+  </view>

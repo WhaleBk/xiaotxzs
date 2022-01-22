@@ -32,6 +32,22 @@ gywm(){
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: async function (options) { 
+		// wx.request({
+    //   url: 'http://demo.wenhorm.top' + '/article/',
+    //   method: 'get',
+    //   data: {},//请求参数格式为json
+    //   success(res) {
+        
+        
+    //       console.log(res)
+         
+    //   },
+    //   fail(err) {
+    //     console.error(err)
+
+       
+    //   }
+    // })
 		// PassportBiz.initApp();
 		// PassportBiz.initPage(this); 
 

@@ -1,9 +1,10 @@
 {
 	"pages": [ 
-		
+	
 		"pages/my/index/my_index",
 		"pages/logs/logs",
 		"pages/my/base/my_base",
+		"pages/my/info/my_info",
 		"pages/about/about",
 		"pages/index/shuangchuan",
 		"pages/home/home",
@@ -35,14 +36,14 @@
 		"list": [
 			{
 				"pagePath": "pages/index/index",
-				"text": "校友互助",
+				"text": "与遇广场",
 				"iconPath": "/images/tabbar/info.png",
 				"selectedIconPath": "/images/tabbar/info.png"
 			}, 
 			
 			{
 				"pagePath": "pages/home/home",
-				"text": "校园风景",
+				"text": "无尘相册",
 				"iconPath": "/images/tabbar/meet.png",
 				"selectedIconPath": "/images/tabbar/meet_cur.png"
 			},

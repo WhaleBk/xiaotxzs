@@ -1,4 +1,82 @@
 <scroll-view current="{{currentTab}}" scroll-y="true" style="height: 100%;" bindscrolltolower="lower">
+
+
+    <!-- 轮播图 -->
+    <view class="bbs-swiper-container" style="margin-top: 30px;">
+        <swiper class="bbs-swiper" autoplay="true" circular="true" interval="3000" easing-function="easeOutCubic" current="{{swiperCurrent}}" bindchange="swiperChange">
+            <!-- 轮播图图片 -->
+            <swiper-item class="bbs-swiper-item" wx:for="{{tuwenxinxi}}" wx:key="index">
+                <!-- 加上widthFix可以使图片自适应 -->
+                <image src="{{item.imgurl}}"></image>
+            </swiper-item>
+        </swiper>
+        <!-- 定制轮播图dots -->
+        <view class="bbs-dots">
+            <block wx:for="{{tuwenxinxi.length}}" wx:key="index">
+                <view class="bbs-dots-item{{index == swiperCurrent ? ' bbs-dot-active' : ''}}"></view>
+            </block>
+        </view>
+    </view>
+    <!-- 轮播图完毕 -->
+
+
+
+
+
+    <view class="mess_sort">
+        <!-- 实时留言 -->
+        <view class="leave-message">
+            <image class="message-image" src="cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/icon/message.png"></image>
+            <swiper style="height:40px;" class="swiper_message" circular vertical autoplay interval="5000" easing-function="easeInOutCubic">
+                <block wx:for="{{tuwenxinxi}}">
+                    <swiper-item class="swiper-item-message">
+                        <view class="message">
+                            <text class="message-name">{{item.name}}</text>
+                            <text class="message-content">{{item.content}}</text>
+                        </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+    </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 分类标签 -->
+    <scroll-view scroll-x class="sort-nav" scroll-with-animation enable-flex="true">
+        <view class="sort-nav-item" wx:for="{{sortList}}" wx:key="index">
+            <image class="sort-nav-icon" src="{{item.icon}}" mode="widthFix" lazy-load="false"></image>
+            <text class="sort-nav-text">{{item.text}}</text>
+            <image class="down-selected" src="../../images/sort/dwon.png"></image>
+        </view>
+    </scroll-view>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 图文信息发布 -->
+
     <block wx:for="{{tuwenxinxi}}">
         <view class="item">
 
@@ -15,7 +93,23 @@
             <view class="content">
                 {{item.content}}
             </view>
-            <image src="{{item.imgurl}}"></image>
+           
+      
+            <scroll-view scroll-x class="sort-nav2" scroll-with-animation enable-flex="true" >
+                <view>
+                    <image style="margin: 3px;" src="{{item.imgurl[0]}}" mode="widthFix" lazy-load="false"></image> 
+                    <image style="margin: 3px;" src="{{item.imgurl[1]}}" mode="widthFix" lazy-load="false"></image>        
+                    <image style="margin: 3px;" src="{{item.imgurl[2]}}" mode="widthFix" lazy-load="false"></image>   
+                    <image style="margin: 3px;" src="{{item.imgurl[3]}}" mode="widthFix" lazy-load="false"></image> 
+                    <image style="margin: 3px;" src="{{item.imgurl[4]}}" mode="widthFix" lazy-load="false"></image>        
+                    <image style="margin: 3px;" src="{{item.imgurl[5]}}" mode="widthFix" lazy-load="false"></image>           
+                    <image style="margin: 3px;" src="{{item.imgurl[6]}}" mode="widthFix" lazy-load="false"></image> 
+                    <image style="margin: 3px;" src="{{item.imgurl[7]}}" mode="widthFix" lazy-load="false"></image>        
+                    <image style="margin: 3px;" src="{{item.imgurl[8]}}" mode="widthFix" lazy-load="false"></image>                       
+                </view>
+            </scroll-view>
+
+
             <view class="sta">赞同9362 · 评论320 · 分享 136</view>
 
 
@@ -24,6 +118,10 @@
         </view>
         <view style="height: 6px;background-color: #cccccc;opacity: 0.2;"></view>
     </block>
+
+    <!-- 图文信息发布完毕 -->
+
+
 
 
 

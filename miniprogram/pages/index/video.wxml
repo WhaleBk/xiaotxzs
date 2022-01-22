@@ -4,13 +4,13 @@
 
     <view class="head">
       <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
-        <image class="avatar xl round bg-gray" src="cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/image1/1642587260256-954.jpg"></image>
+        <image class="avatar xl round bg-gray" src="cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/icon/message.png"></image>
       </view>
       <view class="title">{{item.name}}</view>
     </view>
 
     <view class="section">
-      <video style="width:320px" id="myVideo1" src="{{item.videourl}}" controls></video>
+      <video style="width:320px" id="myVideo1" src="{{item.vidieourl}}" controls></video>
     </view>
     <view class="sta">赞同9362 · 评论320 · 分享 136</view>
     <view style="height: 6px;background-color: #cccccc;opacity: 0.2;"></view>
