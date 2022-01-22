@@ -1,61 +1,53 @@
-<block wx:if="{{isLogin}}"> 
-	<cmpt-comm-list  type="my-info" search="{{search}}" _menus="{{sortMenus}}" _items="{{sortItems}}" router="my/info"
-		topBottom="120" placeholder="搜索标题" returnUrl='/pages/my/info/my_info' bind:myCommListEvent="myCommListListener">
+<scroll-view current="{{currentTab}}" scroll-y="true" style="height: 100%;" bindscrolltolower="lower">
 
-		<view slot="searchEnd" >
-			<button bindtap="url" data-url="/pages/info/info_add"
-				class="btn mid round bg-darkgreen bg-{{skin}} margin-right-s">+ 发布互助</button>
-		</view>
+<!-- 图文信息发布 -->
 
-		<!-- List Begin --> 
-		<view class="text-pic-list-box">  
+<block wx:for="{{tuwenxinxi}}">
+		<view class="item">
 
-			<view class="item shadow"  wx:for="{{dataList.list}}" wx:key="index">
-				<view wx:if="{{item.timeout}}" class="status-right-bottom text-gray">已过期</view>
-				 
-				<view class="title content-cut-two" bindtap="url" data-url="/pages/info/info_detail?id={{item._id}}">{{item.INFO_TITLE}}
-					<text wx:if="{{item.new}}" class="tag margin-left-xs small bg-red round">new</text>
-					<text wx:if="{{item.hot}}"  class="tag margin-left-xs small bg-orange round">hot</text>
-					<text wx:if="{{item.INFO_ORDER==0}}"  class="tag margin-left-xs small bg-darkgreen round bg-{{skin}}">置顶</text>
-				</view> 
+				<view class="head">
+						<view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
+								<image class="avatar xl round bg-gray" src="{{item.touxiang}}"></image>
+						</view>
+						<view class="title">{{item.name}}</view>
+						<view class="hot">
+								<image src="../../images/icon/hot.jpg" style="width:14px;height:16px;"></image>热门
+						</view>
+				</view>
+
+				<view class="content">
+						{{item.content}}
+				</view>
 			 
-				<view class="data text-cut">
-					<text class="margin-right-s text-darkgreen text-{{skin}}">{{item.INFO_TYPE}}</text>
+	
+				<scroll-view scroll-x class="sort-nav2" scroll-with-animation enable-flex="true" >
+						<view>
+								<image style="margin: 3px;" src="{{item.imgurl[0]}}" mode="widthFix" lazy-load="false"></image> 
+								<image style="margin: 3px;" src="{{item.imgurl[1]}}" mode="widthFix" lazy-load="false"></image>        
+								<image style="margin: 3px;" src="{{item.imgurl[2]}}" mode="widthFix" lazy-load="false"></image>   
+								<image style="margin: 3px;" src="{{item.imgurl[3]}}" mode="widthFix" lazy-load="false"></image> 
+								<image style="margin: 3px;" src="{{item.imgurl[4]}}" mode="widthFix" lazy-load="false"></image>        
+								<image style="margin: 3px;" src="{{item.imgurl[5]}}" mode="widthFix" lazy-load="false"></image>           
+								<image style="margin: 3px;" src="{{item.imgurl[6]}}" mode="widthFix" lazy-load="false"></image> 
+								<image style="margin: 3px;" src="{{item.imgurl[7]}}" mode="widthFix" lazy-load="false"></image>        
+								<image style="margin: 3px;" src="{{item.imgurl[8]}}" mode="widthFix" lazy-load="false"></image>                       
+						</view>
+				</scroll-view>
 
-					<text class="margin-right-s">{{item.INFO_VIEW_CNT}}阅读</text>
 
-					<text class="icon-comment margin-right-xxs"></text>
-					<text class="margin-right-s">{{item.INFO_COMMENT_CNT}}</text>
+				<view class="sta">赞同9362 · 评论320 · 分享 136</view>
 
-					<text class="icon-favorfill margin-right-xxs"></text>
-					<text class="margin-right-s">{{item.INFO_FAV_CNT}}</text>
 
-					<text class="icon-appreciatefill margin-right-xxs"></text>
-					<text class="margin-right-s">{{item.INFO_LIKE_CNT}}</text>
- 
-				</view>
 
-				<view class="data text-cut"> 
-					<text>发布时间：{{item.INFO_ADD_TIME}}</text> 
-				</view>
-				<view class="data text-cut">  
-					<text>有效期至：{{item.INFO_EXPIRE_TIME}}</text>
-				</view>
 
-				<view class="data data-button"> 
-					<button class="btn mid bg-red light"  data-id="{{item._id}}" bindtap="bindDelTap"><text class="icon-delete"></text>删除</button>
-					<button class="btn mid bg-darkgreen bg-{{skin}}"  bindtap="url" data-url="/pages/info/info_edit?id={{item._id}}" ><text class="icon-edit"></text>编辑</button>
-				</view>
-			</view> 
-
-			<!--load begin-->
-			<import src="../../../tpls/public/list_load_tpl.wxml" />
-			<template is="listLoadTpl" data="{{skin,dataList}}" />
-			<!--load end-->
-
-		</view>  
-		<!-- List END -->
-	</cmpt-comm-list>
- 
-
+		</view>
+		<view style="height: 6px;background-color: #cccccc;opacity: 0.2;"></view>
 </block>
+
+<!-- 图文信息发布完毕 -->
+
+
+
+
+
+</scroll-view>

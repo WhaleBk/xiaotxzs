@@ -10,9 +10,6 @@ exports.main = async (event, context) => {
 
   var openid = wxContext.OPENID
 
-
-
-
   return cloud.database().collection("tuwenxinxi").where({
     _openid: openid,
   }).get({

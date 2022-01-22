@@ -102,6 +102,12 @@ gywm(){
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
 	onReady: function () {},
+
+	url99(){
+		wx.navigateTo({
+			url: '../../my/info/my_info',
+		})
+	},
 	//下拉刷新
 
 onPullDownRefresh:function()

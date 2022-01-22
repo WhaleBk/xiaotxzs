@@ -194,31 +194,6 @@ Page({
           this.data.imageList[i] = fileID
 
           console.log(this.data.imageList)
-          setTimeout(function ()
-            {
-            }, 1500);
-
-
-          if (i == this.data.imageList.length - 1) {
-            console.log('开始传向数据库');
-            console.log(this.data.imageList)
-            db.collection('tuwenxinxi').add({
-                data: {
-                  name: this.data.yonghuxinxi[0].name,
-                  touxiang: this.data.yonghuxinxi[0].imgurl,
-                  content: content,
-                  imgurl: this.data.imageList,
-                }
-              })
-              .then(result => {
-                console.log("数据库写入成功", result)
-
-              })
-              .catch(err => {
-                console.error("数据库写入失败", err)
-              })
-          }
-
 
 
         }
@@ -226,6 +201,66 @@ Page({
 
 
     }
+    setTimeout(() => {
+      if (true) {
+        const content = this.data.myValue
+        const db = wx.cloud.database()
+        console.log('开始传向数据库');
+        console.log(this.data.imageList)
+        db.collection('tuwenxinxi').add({
+            data: {
+              name: this.data.yonghuxinxi[0].name,
+              touxiang: this.data.yonghuxinxi[0].imgurl,
+              content: content,
+              imgurl: this.data.imageList,
+            }
+          })
+          .then(result => {
+            console.log("数据库写入成功", result)
+
+          })
+          .catch(err => {
+            console.error("数据库写入失败", err)
+          })
+
+      } else {
+
+      }
+
+    }, 5000);
+
+    // setTimeout(function ()
+    // {
+
+
+
+
+    //   const content = this.data.myValue
+    //   const db = wx.cloud.database()
+    //   console.log('开始传向数据库');
+    //   console.log(this.data.imageList)
+    //   db.collection('tuwenxinxi').add({
+    //       data: {
+    //         name: this.data.yonghuxinxi[0].name,
+    //         touxiang: this.data.yonghuxinxi[0].imgurl,
+    //         content: content,
+    //         imgurl: this.data.imageList,
+    //       }
+    //     })
+    //     .then(result => {
+    //       console.log("数据库写入成功", result)
+
+    //     })
+    //     .catch(err => {
+    //       console.error("数据库写入失败", err)
+    //     })
+
+
+    // }, 3000);
+
+
+
+
     wx.switchTab({
       url: '../index/index',
     })

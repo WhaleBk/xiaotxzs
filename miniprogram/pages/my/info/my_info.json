@@ -1,9 +1,6 @@
 {
-	"usingComponents": {
-		"cmpt-comm-list": "../../../cmpts/public/list/comm_list_cmpt"
-	},
-	"enablePullDownRefresh": false,
-	"disableScroll": true,
+  "usingComponents": {},
+	"enablePullDownRefresh": true,
 	"backgroundTextStyle": "dark",
-	"navigationBarTitleText": "我发布的互助"
+  "navigationBarTitleText": "我的发布"
 }

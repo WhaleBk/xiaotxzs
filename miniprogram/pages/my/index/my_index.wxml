@@ -66,7 +66,7 @@
 		<view class="comm-list menu card-menu margin-top shadow radius">
 			 
 
-			<view class="item arrow" bindtap="url" data-url="/pages/my/info/my_info">
+			<view class="item arrow" bindtap="url99">
 				<view class="content">
 					<text class="icon-newshotfill item-icon text-green"></text>
 					<text class="text-black">我发布的信息</text>
@@ -75,13 +75,13 @@
 			</view>
 
 			 
-
+<!-- 
 			<view class="item arrow" bindtap="url" data-url="/pages/my/album/my_album">
 				<view class="content">
 					<text class="icon-picfill item-icon text-orange"></text>
 					<text class="text-black">我上传的相册</text>
 				</view>
-			</view>
+			</view> -->
 
 		 
 
