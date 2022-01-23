@@ -8,7 +8,7 @@
             <swiper-item class="bbs-swiper-item" wx:for="{{tuwenxinxi}}" wx:key="index">
                 <!-- 加上widthFix可以使图片自适应 -->
                 <!-- <image src="{{item.imgurl[0]}}"></image> -->
-                <image src="{{item.imgurl[1]}}"></image>
+                <image src="{{item.imgurl[0]}}"></image>
                 <!-- <image src="{{item.imgurl[2]}}"></image> -->
             </swiper-item>
         </swiper>
@@ -24,7 +24,7 @@
 
 
 
-
+ <!-- xianshi2已经置为FALSE -->
     <view class="mess_sort">
         <!-- 实时留言 -->
         <view class="leave-message">
@@ -58,7 +58,8 @@
 
 
     <!-- 分类标签 -->
-    <scroll-view scroll-x class="sort-nav" scroll-with-animation enable-flex="true">
+    <!-- xianshi2已经置为FALSE -->
+    <scroll-view wx:if="{{xianshi2}}" scroll-x class="sort-nav" scroll-with-animation enable-flex="true">
         <view class="sort-nav-item" wx:for="{{sortList}}" wx:key="index">
             <image class="sort-nav-icon" src="{{item.icon}}" mode="widthFix" lazy-load="false"></image>
             <text class="sort-nav-text">{{item.text}}</text>

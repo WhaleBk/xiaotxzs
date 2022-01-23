@@ -7,14 +7,14 @@
                     <view class="{{flag==0?'select':'normal'}}" id="0" bindtap="switchNav" style="width: 100px;">鲸语广场</view>
                 </view>
                 <view>
-                    <view class="{{flag==1?'select':'normal'}}" id="1" bindtap="switchNav" style="width: 100px;">鲸育微视</view>
+                    <view wx:if="{{xianshi2}}" class="{{flag==1?'select':'normal'}}" id="1" bindtap="switchNav" style="width: 100px;">鲸育微视</view>
                 </view>
 
             </view>
         </scroll-view>
     </view>
-
-    <view class="add" bindtap="fabu">+</view>
+ <!-- xianshi2已经置为FALSE -->
+    <view wx:if="{{xianshi2}}" class="add" bindtap="fabu">+</view>
 
 
 
@@ -26,7 +26,7 @@
     <swiper-item>
         <include src="vip.wxml" />
     </swiper-item>
-    <swiper-item>
+    <swiper-item >
         <include src="video.wxml" />
     </swiper-item>
 

@@ -1,13 +1,16 @@
 const DB = wx.cloud.database().collection("tuwenxinxi")
 
-
+var util = require('../../utils/util.js');
 
 
 
 Page({
   data: {
+    xianshi: false,
+    xianshi2: false,
     swiperCurrent: 0,
     currentTab: 0,
+    currentdata: '',
     flag: 0,
     sortList: [{
       icon: "../../images/sort/news.png",
@@ -97,6 +100,35 @@ Page({
 
   },
   onLoad: function (options) {
+    // var myDate = new Date();
+    // console.log('当前时间' + myDate.toLocaleTimeString())
+    // console.log('当前日期' + myDate.toLocaleDateString())
+    // this.setData({
+    //   currentdata:  myDate.toLocaleDateString()
+    // })
+
+    // console.log('今天的日期是'+this.data.currentdata)
+    // if(this.data.currentdata>'2022/1/23'){
+    //   this.setData({
+    //     xianshi:true
+    //   })
+    //   console.log(this.data.xianshi)
+    // }
+    // else{console.log('还没到时间')}
+    var time = util.formatTime(new Date());
+    // 再通过setData更改Page()里面的data，动态更新页面的数据
+    this.setData({
+      time: time
+    });
+    console.log(time)
+  if(time>'2022/01/22 16:18:44'){
+      this.setData({
+        xianshi:true
+      })
+      console.log(this.data.xianshi)
+    }
+    else{console.log('还没到时间')}
+ 
 
     // var that=this
     // DB.get({
@@ -133,6 +165,23 @@ Page({
         that.setData({
           tuwenxinxi: res.result.data.reverse(),
         })
+      },
+      fail(res) {
+        console.log("请求云函数失败", res)
+      }
+
+    })
+
+
+
+    wx.cloud.callFunction({
+      name: "getxxkey",
+      success(res) {
+        console.log("请求云函数成功", res)
+        that.setData({
+          xianshi2: res.result.data[0].name,
+        })
+        console.log(that.data.xianshi2)
       },
       fail(res) {
         console.log("请求云函数失败", res)

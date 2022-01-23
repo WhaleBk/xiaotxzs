@@ -4,7 +4,7 @@
 
     <!-- 文本输入框 -->
     <view>
-      <textarea class='text-input' autofocus bindinput="bindContent" maxlength='2000' model:value="{{myValue}}" placeholder="在此输入内容,发布前请进行资料注册，完善信息" auto-height='{{true}}' />
+      <textarea class='text-input' autofocus bindinput="bindContent" maxlength='2000' model:value="{{myValue}}" placeholder="在此输入内容" auto-height='{{true}}' />
     </view>
 
     <image src="../../images/send/photo.png" style="height: 40px;width: 40px;" bindtap="chooseImage"></image>

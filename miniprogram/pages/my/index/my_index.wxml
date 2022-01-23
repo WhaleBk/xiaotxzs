@@ -45,7 +45,7 @@
 		</view> -->
 
 		<!--base begin -->
-		<view class="comm-list menu card-menu margin-top shadow radius">
+		<view wx:if="{{xianshi2}}" class="comm-list menu card-menu margin-top shadow radius">
 			<view class="item arrow" bindtap="gerenziliao" data-url="/pages/my/base/my_base">
 				<view class="content">
 					<text class="icon-myfill item-icon text-olive"></text>
@@ -62,8 +62,8 @@
 
 	 
 
-		<!--act begin -->
-		<view class="comm-list menu card-menu margin-top shadow radius">
+		<!--act begin --> <!-- xianshi2已经置为FALSE -->
+		<view wx:if="{{xianshi2}}" class="comm-list menu card-menu margin-top shadow radius">
 			 
 
 			<view class="item arrow" bindtap="url99">
