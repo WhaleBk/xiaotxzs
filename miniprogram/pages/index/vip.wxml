@@ -81,7 +81,7 @@
     <!-- 图文信息发布 -->
 
     <block wx:for="{{tuwenxinxi}}">
-        <view class="item">
+        <view id="{{item._id}}" bindtap="pinglun" class="item" bindtap="pinglun">
 
             <view class="head">
                 <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">

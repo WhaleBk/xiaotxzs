@@ -3,12 +3,14 @@
 	"pages": [ 
 	
 		"pages/my/index/my_index",
+		
 		"pages/logs/logs",
 		"pages/my/base/my_base",
 		"pages/my/info/my_info",
 		"pages/about/about",
 		"pages/home/home",
 		"pages/index/index",
+		"pages/pinglun/pinglun",
 		"pages/shangchuan/shangchuan",
       "pages/home/imgshow1/imgshow1",
       "pages/home/imgshow2/imgshow2",

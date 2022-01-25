@@ -6,6 +6,10 @@ var util = require('../../utils/util.js');
 
 Page({
   data: {
+    yonghuxinxi: [],
+    pingyuValue:'',
+    pinglunxinxi:'',
+    pinglunid: '000000',
     xianshi: false,
     xianshi2: false,
     swiperCurrent: 0,
@@ -70,21 +74,10 @@ Page({
 
 
   },
-  pinglun(e){
+  pinglun(e) {
     console.log(e.currentTarget.id)
- 
     wx.navigateTo({
       url: '../../pages/pinglun/pinglun',
-      events:{         
-        dataname2:function(data){           
-           console.log(data)         
-          }      
-            },      
-            //关键部分！！！在回调函数中运用.eventChannel.emit('参数名称', {data:参数值})即可将此参数传到要转到的页面
-            success: function (res) {       
-               res.eventChannel.emit('dataname1', {data:e.currentTarget.id})    
-            }    
-  
     })
   },
   //轮播图改变事件
@@ -116,92 +109,149 @@ Page({
       }, 1500);
 
   },
+  test00(){console.log(this.data.pingyuValue)},
+  shangchuan(){
+     var myDate = new Date();
+     
+
+      setTimeout(() => {
+        if (true) {
+          const content = this.data.pingyuValue
+          const db = wx.cloud.database()
+          console.log('开始传向数据库');
+         
+          db.collection('pinglun').add({
+              data: {
+                name: this.data.yonghuxinxi[0].name,
+                touxiang: this.data.yonghuxinxi[0].imgurl,        
+                _id: this.data.pinglunid,
+               content: this.data.pingyuValue,
+               shijian:myDate.toLocaleTimeString()
+              }
+            })
+            .then(result => {
+              console.log("数据库写入成功", result)
+  
+            })
+            .catch(err => {
+              console.error("数据库写入失败", err)
+            })
+  
+        } else {
+  
+        }
+  
+      }, 1000);
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  },
   onLoad: function (options) {
-    // var myDate = new Date();
-    // console.log('当前时间' + myDate.toLocaleTimeString())
-    // console.log('当前日期' + myDate.toLocaleDateString())
-    // this.setData({
-    //   currentdata:  myDate.toLocaleDateString()
-    // })
+    
 
-    // console.log('今天的日期是'+this.data.currentdata)
-    // if(this.data.currentdata>'2022/1/23'){
-    //   this.setData({
-    //     xianshi:true
-    //   })
-    //   console.log(this.data.xianshi)
-    // }
-    // else{console.log('还没到时间')}
-    var time = util.formatTime(new Date());
-    // 再通过setData更改Page()里面的data，动态更新页面的数据
-    this.setData({
-      time: time
-    });
-    console.log(time)
-  if(time>'2022/01/22 16:18:44'){
-      this.setData({
-        xianshi:true
+    var that = this
+
+
+    
+    wx.cloud.callFunction({
+      name: "getList2",
+      success(res) {
+        console.log("请求云函数成功", res)
+        that.setData({
+          yonghuxinxi: res.result.data
+        })
+        console.log('ppppp')
+        console.log(that.data.yonghuxinxi)
+        console.log(res.result.data)
+      },
+      fail(res) {
+        console.log("请求云函数失败", res)
+      }
+
+    })
+
+
+
+    //创建获取对象
+    const event = this.getOpenerEventChannel()
+
+    //关键部分！！！通过获取到的对象.event.on('参数名称',function(data)来获取参数值，结果保存在data里
+
+    event.on('dataname1', function (data) {
+
+        console.log('ooooooooooooooooooooooo')
+        console.log(data.data)
+        
+          that.setData({
+            pinglunid: data.data
+          })
+       
+
       })
-      console.log(this.data.xianshi)
-    }
-    else{console.log('还没到时间')}
- 
-
-    // var that=this
-    // DB.get({
-
-    //   success(res){
-
-    //     console.log(res)
-    //     console.log(that.data.tuwenxinxi)
-    //     that.data.tuwenxinxi=res.data
-    //     console.log(res)
-    //     console.log(that.data.tuwenxinxi)
 
 
-    //     that.setData(
-    //       {
-    //         tuwenxinxi:res.data.reverse(),
+    console.log(that.data.pinglunid)
 
 
-    //       },
+       // 找到特定id的评论页面
 
-    //     );
-
-    //   }
-
-
-
-    // })
-
-    let that = this
-    wx.cloud.callFunction({
-      name: "getList",
-      success(res) {
-        console.log("请求云函数成功", res)
+       wx.cloud.database().collection('tuwenxinxi').where({
+        _id:that.data.pinglunid
+       
+      }).get()
+      .then(res=>{
+        console.log(res)
+        console.log('红红火火恍恍惚惚或或或或或或或')
         that.setData({
-          tuwenxinxi: res.result.data.reverse(),
+          tuwenxinxi:res.data
         })
-      },
-      fail(res) {
-        console.log("请求云函数失败", res)
-      }
+  })
 
-    })
-
-    wx.cloud.callFunction({
-      name: "getListshipin",
-      success(res) {
-        console.log("请求云函数成功", res)
-        that.setData({
-          shipinxinxi: res.result.data.reverse(),
-        })
-      },
-      fail(res) {
-        console.log("请求云函数失败", res)
-      }
-
-    })
+  
 
 
 
@@ -209,18 +259,16 @@ Page({
 
 
 
-
-
-
+  
 
     wx.cloud.callFunction({
       name: "getxxkey",
       success(res) {
-        console.log("请求云函数成功", res)
+        // console.log("请求云函数成功", res)
         that.setData({
           xianshi2: res.result.data[0].name,
         })
-        console.log(that.data.xianshi2)
+        // console.log(that.data.xianshi2)
       },
       fail(res) {
         console.log("请求云函数失败", res)

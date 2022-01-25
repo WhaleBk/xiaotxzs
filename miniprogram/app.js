@@ -1,5 +1,6 @@
 const PassportBiz = require('./biz/passport_biz.js'); 
 var tuwenxinxi=[""]
+
 App({
 	onLaunch: function (options) { 
 
