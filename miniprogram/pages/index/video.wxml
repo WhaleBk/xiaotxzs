@@ -4,7 +4,7 @@
 
     <view class="head">
       <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
-        <image class="avatar xl round bg-gray" src="cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/icon/message.png"></image>
+        <image class="avatar xl round bg-gray" src="../../images/sort/message.png"></image>
       </view>
       <view class="title">{{item.name}}</view>
     </view>

@@ -2,7 +2,7 @@
   "miniprogramRoot": "miniprogram/",
   "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": true,
     "postcss": true,
@@ -39,7 +39,7 @@
     "useCompilerPlugins": false,
     "ignoreUploadUnusedFiles": true
   },
-  "appid": "wx506aa5d597d91863",
+  "appid": "wx761504879d54ae29",
   "projectname": "CCAlumniFree",
   "libVersion": "2.11.1",
   "simulatorType": "wechat",

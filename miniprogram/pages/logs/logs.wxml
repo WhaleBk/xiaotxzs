@@ -1,7 +1,7 @@
 <view wx:if="{{isHide}}">
  <view wx:if="{{canIUse}}" >
   <view class='header'>
-   <image src='cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/index/微信图片_20220121190639.jpg'></image>
+   <image src='../../images/sort/message.png'></image>
   </view>
  
   <view class='content'>

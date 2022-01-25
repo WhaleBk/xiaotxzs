@@ -1,5 +1,5 @@
 module.exports = {
-	CLOUD_ID: 'cloud1-6gpqg03rde74a02f', //云环境ID 
+	CLOUD_ID: 'cloud1-0gp38h6r13a7a504', //云环境ID 
 
 	TEST_MODE: true, // 测试模式 涉及小程序码生成路径， 用以下 TEST_TOKEN_ID openid..
 

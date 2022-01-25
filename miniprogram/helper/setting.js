@@ -1,5 +1,5 @@
  module.exports = {
- 	CLOUD_ID: 'cloud1-6gpqg03rde74a02f', // 云环境ID 
+ 	CLOUD_ID: 'cloud1-0gp38h6r13a7a504', // 云环境ID 
 
  	CHECK_CONTENT: true, //图片文字是否校验 
 
