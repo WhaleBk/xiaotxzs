@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    xianshi2: false,
 
   },
 
@@ -13,6 +14,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
+    wx.cloud.callFunction({
+      name: "getxxkey",
+      success(res) {
+        console.log("请求云函数成功", res)
+        that.setData({
+          xianshi2: res.result.data[0].name,
+        })
+        console.log(that.data.xianshi2)
+      },
+      fail(res) {
+        console.log("请求云函数失败", res)
+      }
+
+    })
 
   },
   

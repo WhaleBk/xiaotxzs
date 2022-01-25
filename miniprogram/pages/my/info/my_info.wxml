@@ -2,7 +2,7 @@
 
 <!-- 图文信息发布 -->
 
-<block wx:for="{{tuwenxinxi}}">
+<block  wx:for="{{tuwenxinxi}}">
 		<view class="item">
 
 				<view class="head">

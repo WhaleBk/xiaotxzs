@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    xianshi2: false,
     navH: 0,
     theme: {
       color: '#1890FF',
@@ -279,6 +280,46 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+
+    
+    wx.cloud.callFunction({
+      name: "getxxkey",
+      success(res) {
+        console.log("请求云函数成功", res)
+        that.setData({
+          xianshi2: res.result.data[0].name,
+        })
+        console.log(that.data.xianshi2)
+      },
+      fail(res) {
+        console.log("请求云函数失败", res)
+      }
+
+    })
+
+
+
+
+
+
+
+
+
+    let that = this
+    wx.cloud.callFunction({
+      name: "getList",
+      success(res) {
+        console.log("请求云函数成功hhhhhhhhh", res)
+        that.setData({
+          tuwenxinxi: res.result.data.reverse(),
+        })
+      },
+      fail(res) {
+        console.log("请求云函数失败", res)
+      }
+
+    })
     this.setData({
       navH: app.globalData.navHeight
     });

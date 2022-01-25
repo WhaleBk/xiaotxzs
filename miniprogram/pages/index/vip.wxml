@@ -28,7 +28,7 @@
     <view class="mess_sort">
         <!-- 实时留言 -->
         <view class="leave-message">
-            <image class="message-image" src="cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/icon/message.png"></image>
+            <image  bindtap="fabu" class="message-image" src="cloud://cloud1-6gpqg03rde74a02f.636c-cloud1-6gpqg03rde74a02f-1305916945/icon/message.png"></image>
             <swiper style="height:40px;" class="swiper_message" circular vertical autoplay interval="5000" easing-function="easeInOutCubic">
                 <block wx:for="{{tuwenxinxi}}">
                     <swiper-item class="swiper-item-message">

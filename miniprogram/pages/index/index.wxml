@@ -15,7 +15,7 @@
     </view>
  <!-- xianshi2已经置为FALSE -->
     <view wx:if="{{xianshi2}}" class="add" bindtap="fabu">+</view>
-
+    
 
 
 

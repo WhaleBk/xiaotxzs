@@ -1,5 +1,6 @@
 <!--pages/article/article.wxml-->
-<view class="content" style="margin-top:{{navH*4+40}}rpx">
+<!-- 显示置空 -->
+<view wx:if="{{xianshi2}}" class="content" style="margin-top:{{navH*4+40}}rpx">
   <view class="content-input">
 
     <!-- 文本输入框 -->
@@ -53,3 +54,5 @@
   <!-- <button bindtap="test">打印</button> -->
 
   </view>
+
+  <view>更多功能敬请期待</view>

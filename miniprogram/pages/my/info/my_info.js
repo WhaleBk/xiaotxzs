@@ -6,6 +6,7 @@ const DB = wx.cloud.database().collection("tuwenxinxi")
 
 Page({
   data: {
+    xianshi2: false,
     swiperCurrent: 0,
     currentTab: 0,
     flag: 0,
@@ -97,6 +98,21 @@ Page({
 
   },
   onLoad: function (options) {
+   
+    wx.cloud.callFunction({
+      name: "getxxkey",
+      success(res) {
+        console.log("请求云函数成功", res)
+        that.setData({
+          xianshi2: res.result.data[0].name,
+        })
+        console.log(that.data.xianshi2)
+      },
+      fail(res) {
+        console.log("请求云函数失败", res)
+      }
+
+    })
    
 
     // var that=this

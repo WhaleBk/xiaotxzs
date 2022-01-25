@@ -148,7 +148,7 @@
             </view>
         </view>
     </view>
-    <view class="weui-flex__item">
+    <view wx:if="{{xianshi2}}" class="weui-flex__item">
         <view class="placeholder">
             <view class="event-list">
                 <navigator url="/pages/photoedit/photoedit" class="event-link">

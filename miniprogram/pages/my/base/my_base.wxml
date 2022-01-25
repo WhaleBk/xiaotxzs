@@ -1,6 +1,6 @@
 
-<form bindsubmit="formSubmit" bindreset="formReset" style="width:100%">
-<view class="form-box shadow">
+<form wx:if="{{xianshi2}}"  bindsubmit="formSubmit" bindreset="formReset" style="width:100%">
+<view  class="form-box shadow">
 
   
   <view  class="form-group">
@@ -76,7 +76,7 @@
 	
 
 <view class="padding-bottom flex flex-direction"><button class="btn bg-darkgreen margin-top-s text-bold large bg-{{skin}}" disabled="{{disabled}}" type="{{btnstate}}" form-type="submit">注册</button></view>
-  
+
   
 </view>
 

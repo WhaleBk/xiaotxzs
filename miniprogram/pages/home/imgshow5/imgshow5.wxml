@@ -1,5 +1,5 @@
 <!--pages/home/imgshow5/imgshow5.wxml-->
-<button bindtap="CUImage5">选择图片并上传</button>
+<!-- <button bindtap="CUImage5">选择图片并上传</button> -->
 <view id="imgsection">
   <view class="imglist">
     <block wx:for="{{image}}" wx:for-item="image" wx:key="*this">
