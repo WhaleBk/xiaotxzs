@@ -1,11 +1,13 @@
 const DB = wx.cloud.database().collection("tuwenxinxi")
 
 var util = require('../../utils/util.js');
+var lunbo=[];
 
 
 
 Page({
   data: {
+   
     xianshi: false,
     xianshi2: false,
     swiperCurrent: 0,
@@ -71,6 +73,7 @@ Page({
 
   },
   pinglun(e){
+    console.log('嗯嗯嗯嗯呢恩')
     console.log(e.currentTarget.id)
  
     wx.navigateTo({
@@ -86,6 +89,7 @@ Page({
             }    
   
     })
+   
   },
   //轮播图改变事件
   swiperChange: function (e) {
@@ -117,6 +121,28 @@ Page({
 
   },
   onLoad: function (options) {
+
+    var that = this
+
+    wx.cloud.database().collection("pinglun").where({
+      _id:'617ef50c61f033bc0068371a32b9c795'
+    }).get({
+      success(res) {
+        console.log('成功啦啦啦阿拉拉拉')
+        console.log(res)
+        that.setData({
+          lunbo: res.data[0].imgurl
+
+        })
+
+      },
+      fail(err) {
+
+      }
+    })
+
+
+
     // var myDate = new Date();
     // console.log('当前时间' + myDate.toLocaleTimeString())
     // console.log('当前日期' + myDate.toLocaleDateString())
@@ -174,7 +200,7 @@ Page({
 
     // })
 
-    let that = this
+   
     wx.cloud.callFunction({
       name: "getList",
       success(res) {

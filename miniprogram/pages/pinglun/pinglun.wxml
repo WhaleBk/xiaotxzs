@@ -1,4 +1,4 @@
-<scroll-view current="{{currentTab}}" scroll-y="true" style="height: 100%;" bindscrolltolower="lower">
+
 
 
 
@@ -6,7 +6,7 @@
     <!-- 图文信息发布 -->
 
     <block wx:for="{{tuwenxinxi}}">
-        <view id="{{item._id}}" bindtap="pinglun" class="item" bindtap="pinglun">
+        <view id="{{item._id}}" class="item">
 
             <view class="head">
                 <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
@@ -57,9 +57,9 @@
     <view class="view-contain-ti">
         <text style="padding-top: -3px;" class="text-ti">评论</text>
         <textarea autofocus maxlength='2000' auto-height='{{true}}' bindtap="test00" model:value="{{pingyuValue}}" class="input1" placeholder="请输入您想表达的内容"></textarea>
-        <button bindtap="shangchuan" style="color: yellowgreen; padding-right: 3px;">发送</button>
+        
     </view>
-
+    <button bindtap="shangchuan" style="color: yellowgreen; padding-right: 0px;">发送</button>
 
 
 
@@ -75,8 +75,8 @@
 
 
     <view class="view-contain-ti">
-        <text style="padding-top: -3px;" class="text-ti">评论</text>
-        <text style="padding-top: -10px;  padding-right: 3px ;" class="text-ti">{{item.shijian}}</text>
+        
+        <text style="padding-top: -30px;  padding-right: 3px ;" class="text-ti">{{item.shijian}}</text>
         <textarea autofocus maxlength='2000' auto-height='{{true}}'   class="input1" value="{{item.content}}"></textarea>
        
     </view>
@@ -90,6 +90,3 @@
 
 
 
-
-
-</scroll-view>

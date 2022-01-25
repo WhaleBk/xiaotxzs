@@ -2,13 +2,13 @@ const DB = wx.cloud.database().collection("tuwenxinxi")
 
 var util = require('../../utils/util.js');
 
-
+var pinglunid22
 
 Page({
   data: {
     yonghuxinxi: [],
-    pingyuValue:'',
-    pinglundexinxi:'',
+    pingyuValue: '',
+    pinglundexinxi: '',
     pinglunid: '000000',
     xianshi: false,
     xianshi2: false,
@@ -74,20 +74,8 @@ Page({
 
 
   },
-  pinglun(e) {
-    console.log(e.currentTarget.id)
-    wx.navigateTo({
-      url: '../../pages/pinglun/pinglun',
-    })
-  },
-  //轮播图改变事件
-  swiperChange: function (e) {
-    if (e.detail.source === 'touch') {
-      this.setData({
-        swiperCurrent: e.detail.current
-      })
-    }
-  },
+
+
   //下拉刷新
 
   onPullDownRefresh: function ()
@@ -109,94 +97,164 @@ Page({
       }, 1500);
 
   },
-  test00(){console.log(this.data.pingyuValue)},
-  shangchuan(){
-     var myDate = new Date();
-     
-
-      setTimeout(() => {
-        if (true) {
-          const content = this.data.pingyuValue
-          const db = wx.cloud.database()
-          console.log('开始传向数据库');
-         
-          db.collection('pinglun').add({
-              data: {
-                name: this.data.yonghuxinxi[0].name,
-                touxiang: this.data.yonghuxinxi[0].imgurl,        
-                _id: this.data.pinglunid,
-               content: this.data.pingyuValue,
-               shijian:myDate.toLocaleTimeString()
-              }
-            })
-            .then(result => {
-              console.log("数据库写入成功", result)
-  
-            })
-            .catch(err => {
-              console.error("数据库写入失败", err)
-            })
-  
-        } else {
-  
-        }
-  
-      }, 1000);
-  
+ 
+  shangchuan() {
+    var myDate = new Date();
 
 
+    setTimeout(() => {
+      if (true) {
+        const content = this.data.pingyuValue
+        const db = wx.cloud.database()
+        console.log('开始传向数据库');
 
+        db.collection('pinglun').add({
+            data: {
+              name: this.data.yonghuxinxi[0].name,
+              touxiang: this.data.yonghuxinxi[0].imgurl,
+              id2: pinglunid22,
+              content: this.data.pingyuValue,
+              shijian: myDate.toLocaleTimeString()
+            }
+          })
+          .then(result => {
+            console.log("数据库写入成功", result)
 
+          })
+          .catch(err => {
+            console.error("数据库写入失败", err)
+          })
 
+      } else {
 
+      }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }, 1000);
 
     
+    
+    wx.switchTab({
+      url: '../index/index',
+      
+    })
+
+
+
+
+    setTimeout(() => {
+
+      
+    wx.showToast({
+      title: '发布成功',
+      icon: 'success',
+      duration: 2000
+    })
+      
+    }, 1000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   },
+  onReady:function(){
+    this.onLoad()
+  },
+  
+onShow: function(){
+  this.onLoad();
+}
+,
   onLoad: function (options) {
-    
+  
+
 
     var that = this
 
+    //创建获取对象
+    const event = this.getOpenerEventChannel()
 
-    
+    //关键部分！！！通过获取到的对象.event.on('参数名称',function(data)来获取参数值，结果保存在data里
+
+    event.on('dataname1', function (data) {
+
+      pinglunid22=data.data
+      
+
+
+    })
+    wx.cloud.database().collection("tuwenxinxi").where({
+      _id:pinglunid22
+    }).get({
+      success(res) {
+        that.setData({
+          tuwenxinxi: res.data,
+
+        })
+
+      },
+      fail(err) {
+
+      }
+    })
+    wx.cloud.database().collection("pinglun").where({
+      id2:pinglunid22
+    }).get({
+      success(res) {
+        that.setData({
+          pinglundexinxi: res.data.reverse(),
+
+        })
+
+      },
+      fail(err) {
+
+      }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     wx.cloud.callFunction({
       name: "getList2",
       success(res) {
@@ -214,62 +272,32 @@ Page({
 
     })
 
-     
-    wx.cloud.callFunction({
-      name: "getListpinglun",
-      success(res) {
-        console.log("请求云函数成功", res)
-        that.setData({
-          pinglundexinxi: res.result.data.reverse()
-        })
-        console.log('ppppp')
-        console.log(that.data.yonghuxinxi)
-        console.log(res.result.data)
-      },
-      fail(res) {
-        console.log("请求云函数失败", res)
-      }
 
-    })
+    // wx.cloud.callFunction({
+    //   name: "getListpinglun",
+    //   success(res) {
+    //     console.log("请求云函数成功", res)
+    //     that.setData({
+    //       pinglundexinxi: res.result.data.reverse()
+    //     })
+    //     console.log('ppppp')
+    //     console.log(that.data.yonghuxinxi)
+    //     console.log(res.result.data)
+    //   },
+    //   fail(res) {
+    //     console.log("请求云函数失败", res)
+    //   }
+
+    // })
 
 
 
-    //创建获取对象
-    const event = this.getOpenerEventChannel()
-
-    //关键部分！！！通过获取到的对象.event.on('参数名称',function(data)来获取参数值，结果保存在data里
-
-    event.on('dataname1', function (data) {
-
-        console.log('ooooooooooooooooooooooo')
-        console.log(data.data)
-        
-          that.setData({
-            pinglunid: data.data
-          })
-       
-
-      })
 
 
     console.log(that.data.pinglunid)
 
 
-       // 加载特定id的评论页面
-
-       wx.cloud.database().collection('tuwenxinxi').where({
-        _id:that.data.pinglunid
-       
-      }).get()
-      .then(res=>{
-        console.log(res)
-        console.log('红红火火恍恍惚惚或或或或或或或')
-        that.setData({
-          tuwenxinxi:res.data
-        })
-  })
-
-  
+    // 加载特定id的评论页面
 
 
 
@@ -277,7 +305,11 @@ Page({
 
 
 
-  
+
+
+
+
+
 
     wx.cloud.callFunction({
       name: "getxxkey",
@@ -294,60 +326,21 @@ Page({
 
     })
 
-  },
-  shuaxin: function (options) {
-
-    var that = this
-    DB.get({
-
-      success(res) {
-
-        console.log(res)
-        console.log(that.data.tuwenxinxi)
-        that.data.tuwenxinxi = res.data
-        console.log(res)
-        console.log(that.data.tuwenxinxi)
-
-      }
 
 
-    })
+   
+    
+
+
 
   },
-  fabu: function () {
-    console.log('gggg');
-    // wx.navigateTo({
-    //   url: '../shangchuan/shangchuan',
-    // })
-    wx.redirectTo({
-      url: '../shangchuan/shangchuan',
-      success: function (res) {
-        console.log(res)
-      }
-    })
-  },
-  switchNav: function (e) {
-    console.log(e);
-    var page = this;
-    var id = e.target.id;
-    if (this.data.currentTab == id) {
-      return false;
-    } else {
-      page.setData({
-        currentTab: id
-      });
-    }
-    page.setData({
-      flag: id
-    });
-  },
-  onShareAppMessage: function () {
-    return {
-      title: '糗事百科',
-      desc: '这里有搞笑的娱乐段子',
-      path: '/index/index'
-    }
-  },
+
+
+
+
+  
+
+  
   lower() {
     console.log('hhh')
     wx.stopPullDownRefresh();
