@@ -101,6 +101,16 @@ Page({
   },
   //下拉刷新
 
+  onReady:function(){
+    this.onLoad()
+  },
+  
+onShow: function(){
+  this.onLoad();
+}
+,
+
+
   onPullDownRefresh: function ()
 
   {
