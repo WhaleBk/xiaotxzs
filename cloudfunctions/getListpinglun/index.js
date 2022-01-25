@@ -5,20 +5,12 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const wxContext = cloud.getWXContext()
-
-
-  var openid = wxContext.OPENID
-
-  return cloud.database().collection("yonghu").where({
-    _openid: 'ouTH45Gl2hskARZkGR8d6RHRa-jc',
-  }).get({
-    success(res) {
+  return cloud.database().collection("pinglun").get({
+    success(res){
       return res
-    },
-    fail(err) {
+    },fail(err){
       return err
     }
   })
-
+  
 }

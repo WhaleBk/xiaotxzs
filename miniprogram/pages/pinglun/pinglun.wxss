@@ -278,7 +278,7 @@
 }
 .view-contain-ti {
   display: flex;
-  height: 100px;
+  height: 60px;
   margin: 20px;
   border: 3rpx solid #faca82;
   border-radius: 10rpx;

@@ -3,62 +3,93 @@
 
 
 
-<!-- 图文信息发布 -->
+    <!-- 图文信息发布 -->
 
-<block wx:for="{{tuwenxinxi}}">
-    <view id="{{item._id}}" bindtap="pinglun" class="item" bindtap="pinglun">
+    <block wx:for="{{tuwenxinxi}}">
+        <view id="{{item._id}}" bindtap="pinglun" class="item" bindtap="pinglun">
 
-        <view class="head">
-            <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
-                <image class="avatar xl round bg-gray" src="{{item.touxiang}}"></image>
+            <view class="head">
+                <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
+                    <image class="avatar xl round bg-gray" src="{{item.touxiang}}"></image>
+                </view>
+                <view class="title">{{item.name}}</view>
+                <view class="hot">
+                    <image src="../../images/icon/hot.jpg" style="width:14px;height:16px;"></image>热门
+                </view>
             </view>
-            <view class="title">{{item.name}}</view>
-            <view class="hot">
-                <image src="../../images/icon/hot.jpg" style="width:14px;height:16px;"></image>热门
+
+            <view class="content">
+                {{item.content}}
             </view>
+
+
+            <scroll-view scroll-x class="sort-nav2" scroll-with-animation enable-flex="true">
+                <view>
+                    <image style="margin: 3px;" src="{{item.imgurl[0]}}" mode="widthFix" lazy-load="false"></image>
+                    <image style="margin: 3px;" src="{{item.imgurl[1]}}" mode="widthFix" lazy-load="false"></image>
+                    <image style="margin: 3px;" src="{{item.imgurl[2]}}" mode="widthFix" lazy-load="false"></image>
+                    <image style="margin: 3px;" src="{{item.imgurl[3]}}" mode="widthFix" lazy-load="false"></image>
+                    <image style="margin: 3px;" src="{{item.imgurl[4]}}" mode="widthFix" lazy-load="false"></image>
+                    <image style="margin: 3px;" src="{{item.imgurl[5]}}" mode="widthFix" lazy-load="false"></image>
+                    <image style="margin: 3px;" src="{{item.imgurl[6]}}" mode="widthFix" lazy-load="false"></image>
+                    <image style="margin: 3px;" src="{{item.imgurl[7]}}" mode="widthFix" lazy-load="false"></image>
+                    <image style="margin: 3px;" src="{{item.imgurl[8]}}" mode="widthFix" lazy-load="false"></image>
+                </view>
+            </scroll-view>
+
+
+            <view class="sta">赞同9362 · 评论320 · 分享 136</view>
+
+
+
+
         </view>
-
-        <view class="content">
-            {{item.content}}
-        </view>
-       
-  
-        <scroll-view scroll-x class="sort-nav2" scroll-with-animation enable-flex="true" >
-            <view>
-                <image style="margin: 3px;" src="{{item.imgurl[0]}}" mode="widthFix" lazy-load="false"></image> 
-                <image style="margin: 3px;" src="{{item.imgurl[1]}}" mode="widthFix" lazy-load="false"></image>        
-                <image style="margin: 3px;" src="{{item.imgurl[2]}}" mode="widthFix" lazy-load="false"></image>   
-                <image style="margin: 3px;" src="{{item.imgurl[3]}}" mode="widthFix" lazy-load="false"></image> 
-                <image style="margin: 3px;" src="{{item.imgurl[4]}}" mode="widthFix" lazy-load="false"></image>        
-                <image style="margin: 3px;" src="{{item.imgurl[5]}}" mode="widthFix" lazy-load="false"></image>           
-                <image style="margin: 3px;" src="{{item.imgurl[6]}}" mode="widthFix" lazy-load="false"></image> 
-                <image style="margin: 3px;" src="{{item.imgurl[7]}}" mode="widthFix" lazy-load="false"></image>        
-                <image style="margin: 3px;" src="{{item.imgurl[8]}}" mode="widthFix" lazy-load="false"></image>                       
-            </view>
-        </scroll-view>
-
-
-        <view class="sta">赞同9362 · 评论320 · 分享 136</view>
+        <view style="height: 6px;background-color: #cccccc;opacity: 0.2;"></view>
+        <!-- 图文信息发布完毕 -->
 
 
 
+    </block>
 
+
+
+    <!-- 评论功能 -->
+    <view class="view-contain-ti">
+        <text style="padding-top: -3px;" class="text-ti">评论</text>
+        <textarea autofocus maxlength='2000' auto-height='{{true}}' bindtap="test00" model:value="{{pingyuValue}}" class="input1" placeholder="请输入您想表达的内容"></textarea>
+        <button bindtap="shangchuan" style="color: yellowgreen; padding-right: 3px;">发送</button>
     </view>
-    <view style="height: 6px;background-color: #cccccc;opacity: 0.2;"></view>
-</block>
 
-<!-- 图文信息发布完毕 -->
+
+
+
+    <!-- 评论展示 -->
+
+   <block wx:for="{{pinglundexinxi}}">
+
+    <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
+        <image class="avatar xl round bg-gray" src="{{item.touxiang}}"></image>
+    </view>
+    <view class="title">{{item.name}}</view>
+
+
+
+    <view class="view-contain-ti">
+        <text style="padding-top: -3px;" class="text-ti">评论</text>
+        <text style="padding-top: -10px;  padding-right: 3px ;" class="text-ti">{{item.shijian}}</text>
+        <textarea autofocus maxlength='2000' auto-height='{{true}}'   class="input1" value="{{item.content}}"></textarea>
+       
+    </view>
+
+
+
+   </block>
+
+
+
+
+
+
 
 
 </scroll-view>
-
-
-<!-- 评论功能 -->
-<view class="view-contain-ti">
-    <text style="padding-top: -3px;" class="text-ti">评论</text>
-    <textarea autofocus maxlength='2000'  auto-height='{{true}}' bindtap="test00" model:value="{{pingyuValue}}" class="input1" placeholder="请输入您想表达的内容"></textarea>
-   <button bindtap="shangchuan" style="color: yellowgreen; padding-right: 3px;">发送</button>
-</view>
-
-
-

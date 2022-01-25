@@ -8,7 +8,7 @@ Page({
   data: {
     yonghuxinxi: [],
     pingyuValue:'',
-    pinglunxinxi:'',
+    pinglundexinxi:'',
     pinglunid: '000000',
     xianshi: false,
     xianshi2: false,
@@ -214,6 +214,24 @@ Page({
 
     })
 
+     
+    wx.cloud.callFunction({
+      name: "getListpinglun",
+      success(res) {
+        console.log("请求云函数成功", res)
+        that.setData({
+          pinglundexinxi: res.result.data.reverse()
+        })
+        console.log('ppppp')
+        console.log(that.data.yonghuxinxi)
+        console.log(res.result.data)
+      },
+      fail(res) {
+        console.log("请求云函数失败", res)
+      }
+
+    })
+
 
 
     //创建获取对象
@@ -237,7 +255,7 @@ Page({
     console.log(that.data.pinglunid)
 
 
-       // 找到特定id的评论页面
+       // 加载特定id的评论页面
 
        wx.cloud.database().collection('tuwenxinxi').where({
         _id:that.data.pinglunid
