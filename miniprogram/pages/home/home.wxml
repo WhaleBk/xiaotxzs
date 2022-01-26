@@ -4,7 +4,7 @@
             <view class="event-list">
                 <navigator url="/pages/home/imgshow1/imgshow1" class="event-link">
                     <view class="event-img">
-                        <image mode="widthFix" src="https://image-1302635214.cos.ap-chengdu.myqcloud.com/image1-8.jpg">
+                        <image mode="widthFix" src="{{xiangce0[0].imgurl}}">
                         </image>
                     </view>
                     <view class="event-content">
@@ -24,7 +24,7 @@
             <view class="event-list">
                 <navigator url="/pages/home/imgshow2/imgshow2" class="event-link">
                     <view class="event-img">
-                        <image mode="widthFix" src="https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-1.jpg">
+                        <image mode="widthFix" src="{{xiangce0[1].imgurl}}">
                         </image>
                     </view>
                     <view class="event-content">
@@ -47,7 +47,7 @@
             <view class="event-list">
                 <navigator url="/pages/home/imgshow3/imgshow3" class="event-link">
                     <view class="event-img">
-                        <image mode="widthFix" src="https://image-1302635214.cos.ap-chengdu.myqcloud.com/image3-3.jpg">
+                        <image mode="widthFix" src="{{xiangce0[2].imgurl}}">
                         </image>
                     </view>
                     <view class="event-content">
@@ -67,7 +67,7 @@
             <view class="event-list">
                 <navigator url="/pages/home/imgshow4/imgshow4" class="event-link">
                     <view class="event-img">
-                        <image mode="widthFix" src="https://image-1302635214.cos.ap-chengdu.myqcloud.com/image4-6.jpg">
+                        <image mode="widthFix" src="{{xiangce0[3].imgurl}}">
                         </image>
                     </view>
                     <view class="event-content">
@@ -90,7 +90,7 @@
             <view class="event-list">
                 <navigator url="/pages/home/imgshow5/imgshow5" class="event-link">
                     <view class="event-img">
-                        <image mode="widthFix" src="https://image-1302635214.cos.ap-chengdu.myqcloud.com/image5-4.jpg">
+                        <image mode="widthFix" src="{{xiangce0[4].imgurl}}">
                         </image>
                     </view>
                     <view class="event-content">
@@ -110,7 +110,7 @@
             <view class="event-list">
                 <navigator url="/pages/home/imgshow6/imgshow6" class="event-link">
                     <view class="event-img">
-                        <image mode="widthFix" src="https://image-1302635214.cos.ap-chengdu.myqcloud.com/image6-5.jpg">
+                        <image mode="widthFix" src="{{xiangce0[5].imgurl}}">
                         </image>
                     </view>
                     <view class="event-content">
@@ -133,7 +133,7 @@
             <view class="event-list">
                 <navigator url="/pages/home/imgshow7/imgshow7" class="event-link">
                     <view class="event-img">
-                        <image mode="widthFix" src="https://image-1302635214.cos.ap-chengdu.myqcloud.com/image7-1.jpg">
+                        <image mode="widthFix" src="{{xiangce0[6].imgurl}}">
                         </image>
                     </view>
                     <view class="event-content">

@@ -1,30 +1,32 @@
 // pages/home/imgshow2/imgshow2.js
+var DB = wx.cloud.database().collection("xiangce")
+var db = wx.cloud.database().collection("xiangce")
 var app = getApp()  
 Page({
-  async checkUser() {
-    //获取clouddisk是否有当前用户的数据，注意这里默认带了一个where({_openid:"当前用户的openid"})的条件
-    const userData = await db.collection('image1').get()
-    console.log("当前用户的数据对象",userData)
+  // async checkUser() {
+  //   //获取clouddisk是否有当前用户的数据，注意这里默认带了一个where({_openid:"当前用户的openid"})的条件
+  //   const userData = await db.collection('image1').get()
+  //   console.log("当前用户的数据对象",userData)
 
-    //如果当前用户的数据data数组的长度为0，说明数据库里没有当前用户的数据
-    if(userData.data.length === 0){
-      //没有当前用户的数据，那就新建一个数据框架，其中_id和_openid会自动生成
-      return await db.collection('image1').add({
-        data:{
-          //nickName和avatarUrl可以通过getUserInfo来获取，这里不多介绍
-          "nickName": "",
-          "avatarUrl": "",
-          "albums": [ ],
-          "folders": [ ]
-        }
-      })
-    }else{
-      this.setData({
-        userData
-      })
-      console.log('用户数据',userData)
-    }
-  },
+  //   //如果当前用户的数据data数组的长度为0，说明数据库里没有当前用户的数据
+  //   if(userData.data.length === 0){
+  //     //没有当前用户的数据，那就新建一个数据框架，其中_id和_openid会自动生成
+  //     return await db.collection('xiangce').add({
+  //       data:{
+  //         //nickName和avatarUrl可以通过getUserInfo来获取，这里不多介绍
+  //         "nickName": "",
+  //         "avatarUrl": "",
+  //         "albums": [ ],
+  //         "folders": [ ]
+  //       }
+  //     })
+  //   }else{
+  //     this.setData({
+  //       userData
+  //     })
+  //     console.log('用户数据',userData)
+  //   }
+  // },
 /*返回到上一页*/
   navigateBack() {
     wx.navigateBack({
@@ -57,9 +59,9 @@ CUImage2() {
           this.setData({
             fileID:fileID
           })
-          db.collection('image2').add({
+          db.collection('xiangce').add({
             data: {
-              name: name,
+              name: 'inshow2',
               fileID: fileID,
             }
           })
@@ -74,33 +76,34 @@ CUImage2() {
     },
   })
 },
-getFiles() {
-  const db = wx.cloud.database()  //获取数据库的引用
-  db.collection("image2")
-  .get()
-  .then(res => {
-    console.log('用户数据',res.data)
-  })
-  .catch(err => {
-    console.error(err)
-  })
-},
+// getFiles() {
+//   const db = wx.cloud.database()  //获取数据库的引用
+//   db.collection("image2")
+//   .get()
+//   .then(res => {
+//     console.log('用户数据',res.data)
+//   })
+//   .catch(err => {
+//     console.error(err)
+//   })
+// },
   /**
    * 页面的初始数据
    */
   data: {
-    image:[
-      {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-1.jpg"},
-      {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-2.jpg"},
-      {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-3.jpg"},
-      {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-4.jpg"},
-      {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-5.jpg"},
-      {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-6.jpg"},
-      {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-7.jpg"},
-      {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-8.jpg"},
-      {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-9.jpg"},
+    xiangce2:[],
+    // image:[
+    //   {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-1.jpg"},
+    //   {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-2.jpg"},
+    //   {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-3.jpg"},
+    //   {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-4.jpg"},
+    //   {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-5.jpg"},
+    //   {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-6.jpg"},
+    //   {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-7.jpg"},
+    //   {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-8.jpg"},
+    //   {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-9.jpg"},
      
-    ],
+    // ],
     fileID:"",
   },
 
@@ -108,8 +111,22 @@ getFiles() {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.checkUser()
-    this.getFiles()
+    let that = this
+    wx.cloud.database().collection("xiangce").where({
+      name: 'inshow2',
+    }).get({
+      success(res) {
+        console.log("请求云函数成功噜啦噜啦嘞绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿", res)
+        that.setData({
+          xiangce2: res.data.reverse(),
+        })
+      },
+      fail(err) {
+        return err
+      }
+    })
+    // this.checkUser()
+    // this.getFiles()
   },
 
   /**

@@ -7,6 +7,7 @@ Page({
    */
   data: {
     xianshi2: false,
+    xiangce0:[]
 
   },
 
@@ -14,7 +15,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this
+   
+    var that = this
+
+    wx.cloud.database().collection("xiangce").where({
+      name:'inshow0'
+    }).get({
+      success(res) {
+        console.log('成功啦啦啦阿拉拉拉')
+        console.log(res)
+        that.setData({
+          xiangce0: res.data
+
+        })
+
+      },
+      fail(err) {
+
+      }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     wx.cloud.callFunction({
       name: "getxxkey",
       success(res) {

@@ -129,11 +129,11 @@ Page({
   },
   tiaozhuan1(){
     wx.navigateTo({
-      url: '../xjzy/xzjy',
+      url: '../xzjy/xzjy',
       
     })
   },
-  tiaozhuan7(){
+  tiaozhuan0(){
     wx.navigateTo({
       url: '../zytz/zytz',
       
@@ -149,14 +149,7 @@ Page({
   },
   //下拉刷新
 
-  onReady:function(){
-    this.onLoad()
-  },
-  
-onShow: function(){
-  this.onLoad();
-}
-,
+
 
 
   onPullDownRefresh: function ()

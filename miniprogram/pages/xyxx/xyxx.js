@@ -131,6 +131,14 @@ Page({
       }, 1500);
 
   },
+  onReady:function(){
+    this.onLoad()
+  },
+  
+onShow: function(){
+  this.onLoad();
+}
+,
   onLoad: function (options) {
 
     var that = this
