@@ -1,0 +1,278 @@
+.bg{
+  background-color: #1cbbb4;
+  height: 50px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.nav{
+  width: 70%;
+  height: 40px;
+}
+.opr{
+  width: 20px;
+  height: 20px;
+  border-radius:50%; 
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFBA1E;
+  background-color: #ffffff;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.add{
+  width: 20%;
+  height: 50px;
+  line-height: 50px;
+  text-align: right;
+  margin-right:10px;
+  font-size: 50px; 
+}
+.scroll-view_H{
+  margin-left: 10px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+}
+.normal{
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding-left:10px;
+  padding-right: 10px;
+  font-size: 14px;
+}
+.select{
+   width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding-left:20px;
+  padding-right: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.line{
+  height: 10px;
+  background-color: #F2F2F2;
+}
+.item{
+  margin: 10px;
+}
+.head{
+  display: flex;
+  flex-direction: row;
+  height: 77px;
+  align-items: center;
+}
+.title{
+  width: 60%;
+  margin-left:10px;
+  font-weight: bold; 
+}
+.hot{
+  text-align: right;
+  width: 30%;
+}
+.content{
+  padding: 10px;
+  line-height: 25px;
+}
+.sta{
+  padding: 10px;
+  color: #999999;
+  font-size: 16px;
+}
+.icon{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.icon view{
+   margin: 0 auto;
+   width: 25%;
+}
+.last{
+  text-align: right;
+}
+.section{
+  text-align: center;
+}
+
+
+/* 轮播图 */
+.bbs-swiper{
+  width: 100%;
+  height: 100%;
+  border-radius: 15rpx;
+}
+
+.bbs-swiper-container{
+  width: 90%;
+  height: 300rpx;
+  margin: 0rpx auto;
+  position: relative;
+  border-radius: 15rpx;
+  overflow: hidden;
+}
+
+.bbs-swiper-item{
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+
+.bbs-swiper-item>image{
+  width: 100%;
+  height: 100%;
+  border-radius: 15rpx;
+}
+
+.bbs-dots{
+  width: auto;
+  height: 10rpx;
+  position: absolute;
+  bottom: 20rpx;
+  border-radius: 50rpx;
+  left: 270rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rpx 10rpx;
+}
+.bbs-dots-item{
+  width: 8rpx;
+  height: 8rpx;
+  margin: 0rpx 8rpx;
+  border-radius: 50%;
+  background-color: green;
+  transition: all .3s;
+}
+.bbs-dot-active{
+  width: 10rpx;
+  height: 10rpx;
+  background-color: blue;
+}
+
+
+
+/* 分类标签 */
+.sort-nav{
+  width: 90%;
+  height: 200rpx;
+  margin: 0rpx auto;
+  /* margin-top: 0rpx; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  white-space: nowrap;
+  /* padding-bottom: 15rpx; */
+  /* padding: 20rpx; */
+  /* background-color: rgb(250, 250, 250); */
+
+}
+.sort-nav2{
+ 
+  
+  margin: 0rpx auto;
+  /* margin-top: 0rpx; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  white-space: nowrap;
+  /* padding-bottom: 15rpx; */
+  /* padding: 20rpx; */
+  /* background-color: rgb(250, 250, 250); */
+
+}
+
+::-webkit-scrollbar {
+  
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+.sort-nav-item{
+  display: inline-block;
+  width: 94rpx;
+  font-size: 20rpx;
+  text-align: center;
+  /* line-height: 4rpx; */
+  color: #aaa;
+  margin: 0rpx 34rpx 0rpx 20rpx;
+}
+.sort-nav-icon{
+  width: 84rpx;
+  height: 84rpx;
+}
+.sort-nav-text{
+  display: block;
+}
+.down-selected{
+  display: block;
+  margin: auto;
+  margin-top: 5rpx;
+  width: 25rpx;
+  height: 25rpx;
+}
+
+
+
+
+/* 实时留言 */
+.message-image{
+  
+  width: 60rpx;
+  height: 60rpx;
+}
+.swiper_message{
+  float: right;
+  display:inline-flex;
+  height: 52rpx;
+  width: 90%;
+}
+
+.swiper-item-message{
+  padding: 0;
+  display: flex;
+}
+
+.message{
+  width: 100%;
+  height: 52rpx;
+  margin: auto 0rpx auto 20rpx;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  text-overflow: ellipsis;
+  
+}
+.leave-message{
+  display: flex;
+  width: 85%;
+  height: 120rpx;
+  margin: auto;
+  align-items: center;
+  margin-top: 10rpx;
+  
+  
+}
+
+.message-content{
+  margin-left: 5px;
+  font-size: 25rpx;
+  color: #b6b3b3;
+}
+
+.message-name{
+  padding: 0 4px;
+  color: rgb(34, 173, 207);
+  font-weight: 400;
+  font-size: 27rpx;
+  border: rgb(34, 173, 207) 1px solid;
+  border-radius: 10rpx;
+}

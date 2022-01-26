@@ -7,6 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
+    navH: 0,
+    theme: {
+      color: '#1890FF',
+      tabColor: '#333' || '#20ACAB',
+    },
+    leixing:'',
     xianshi2: false,
     navH: 0,
     theme: {
@@ -14,10 +21,10 @@ Page({
       tabColor: '#333' || '#20ACAB',
     },
     topic: {
-      sorts: ["闲置交易", "表白交友", "疑问互答", "任务兼职",
+      sorts: ["重要通知","闲置交易", "表白交友", "疑问互答", "任务兼职",
         "相约学习", "实物招领", "趣事分享"
-      ],
-      selected: 0
+      ], selected:0
+      
     },
     content: "",
 
@@ -101,17 +108,8 @@ Page({
 
   // 发布的类型
   clickTag: function (e) {
-    // var that=this;
-    // console.log(e.target.dataset.topicid) ;
-    // console.log(that.data.topic.sorts) ;
-    // console.log(that.data.topic.sorts[e.target.dataset.topicid]) ;
 
-
-
-    // console.log(e.target.dataset.topicid) ;
-    // console.log(this.data.topic.sorts) ;
-    console.log(this.data.topic.sorts[e.target.dataset.topicid]);
-    console.log(this.data.imageList)
+    console.log(e) 
     let topicId = e.target.dataset.topicid;
     let topic = this.data.topic;
     topic.selected = topicId;
@@ -119,6 +117,13 @@ Page({
       topic
     })
 
+
+
+    
+    this.setData({
+      leixing:this.data.topic.sorts[e.target.dataset.topicid]
+    })
+  
   },
 
   CUImage2() {
@@ -214,6 +219,7 @@ Page({
               touxiang: this.data.yonghuxinxi[0].imgurl,
               content: content,
               imgurl: this.data.imageList,
+              sort:this.data.leixing
             }
           })
           .then(result => {

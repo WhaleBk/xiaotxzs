@@ -10,7 +10,18 @@
 		"pages/about/about",
 		"pages/home/home",
 		"pages/index/index",
+
 		"pages/pinglun/pinglun",
+		"pages/zytz/zytz",
+		"pages/xzjy/xzjy",
+		"pages/bbjy/bbjy",
+		"pages/ywhd/ywhd",
+		"pages/rwjz/rwjz",
+		"pages/xyxx/xyxx",
+		"pages/swzl/swzl",
+		"pages/qsfx/qsfx",
+
+
 		"pages/shangchuan/shangchuan",
       "pages/home/imgshow1/imgshow1",
       "pages/home/imgshow2/imgshow2",

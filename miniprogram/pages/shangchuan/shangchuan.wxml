@@ -26,16 +26,33 @@
     </view>
 
 
-      <!-- 板块选择 -->
-      <view wx:if="{{topic.sorts && topic.sorts.length > 0}}">
-        <view class="line"></view>
+    <!-- 板块选择 -->
+    <!-- <view wx:if="{{topic.sorts && topic.sorts.length > 0}}">
+      <view class="line"></view>
+      <view class="tag-title">选择类型</view>
+      <scroll-view scroll-x scroll-with-animation enable-flex="true" class="tag-list">
+        <view class="tag" bindtap="clickTag" data-topicId="{{index}}" style="{{index == topic.selected? 'color:' +theme.tabColor+ ';border-color:'+theme.tabColor:''}}" wx:for="{{topic.sorts}}" wx:key="index">{{item}}</view>
+      </scroll-view>
+    </view> -->
+
+
+     <!-- 板块选择 -->
+     <view wx:if="{{topic.sorts && topic.sorts.length > 0}}" >
+      <view class="line"></view>
         <view class="tag-title">选择类型</view>
         <scroll-view scroll-x scroll-with-animation enable-flex="true" class="tag-list">
-          <view class="tag" bindtap="clickTag" data-topicId="{{index}}" style="{{index == topic.selected? 'color:' +theme.tabColor+ ';border-color:'+theme.tabColor:''}}" wx:for="{{topic.sorts}}" wx:key="index">{{item}}</view>
+          <view class="tag"
+            bindtap="clickTag"
+            data-topicId="{{index}}"
+            style="{{index == topic.selected? 'color:' +theme.tabColor+ ';border-color:'+theme.tabColor:''}}"
+            
+            wx:for="{{topic.sorts}}"
+            wx:key="index"
+          >{{item}}</view>
         </scroll-view>
-      </view>
+    </view>
 
-   
+
 
   </view>
 
@@ -53,6 +70,6 @@
 
   <!-- <button bindtap="test">打印</button> -->
 
-  </view>
+</view>
 
-  <view>更多功能敬请期待</view>
+<view>更多功能敬请期待</view>

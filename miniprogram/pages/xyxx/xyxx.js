@@ -1,13 +1,13 @@
 const DB = wx.cloud.database().collection("tuwenxinxi")
 
 var util = require('../../utils/util.js');
-var lunbo=[];
+var lunbo = [];
 
 
 
 Page({
   data: {
-   
+
     xianshi: false,
     xianshi2: false,
     swiperCurrent: 0,
@@ -72,72 +72,26 @@ Page({
 
 
   },
-  pinglun(e){
+  pinglun(e) {
     console.log('嗯嗯嗯嗯呢恩')
     console.log(e.currentTarget.id)
- 
+
     wx.navigateTo({
       url: '../../pages/pinglun/pinglun',
-      events:{         
-        dataname2:function(data){           
-           console.log(data)         
-          }      
-            },      
-            //关键部分！！！在回调函数中运用.eventChannel.emit('参数名称', {data:参数值})即可将此参数传到要转到的页面
-            success: function (res) {       
-               res.eventChannel.emit('dataname1', {data:e.currentTarget.id})    
-            }    
-  
+      events: {
+        dataname2: function (data) {
+          console.log(data)
+        }
+      },
+      //关键部分！！！在回调函数中运用.eventChannel.emit('参数名称', {data:参数值})即可将此参数传到要转到的页面
+      success: function (res) {
+        res.eventChannel.emit('dataname1', {
+          data: e.currentTarget.id
+        })
+      }
+
     })
-   
-  },
-  tiaozhuan7(){
-    wx.navigateTo({
-      url: '../qsfx/qsfx',
-      
-    })
-  },
-  tiaozhuan6(){
-    wx.navigateTo({
-      url: '../swzl/swzl',
-      
-    })
-  },
-  tiaozhuan5(){
-    wx.navigateTo({
-      url: '../xyxx/xyxx',
-      
-    })
-  },
-  tiaozhuan4(){
-    wx.navigateTo({
-      url: '../rwjz/rwjz',
-      
-    })
-  },
-  tiaozhuan3(){
-    wx.navigateTo({
-      url: '../ywhd/ywhd',
-      
-    })
-  },
-  tiaozhuan2(){
-    wx.navigateTo({
-      url: '../bbjy/bbjy',
-      
-    })
-  },
-  tiaozhuan1(){
-    wx.navigateTo({
-      url: '../xjzy/xzjy',
-      
-    })
-  },
-  tiaozhuan7(){
-    wx.navigateTo({
-      url: '../zytz/zytz',
-      
-    })
+
   },
   //轮播图改变事件
   swiperChange: function (e) {
@@ -149,14 +103,13 @@ Page({
   },
   //下拉刷新
 
-  onReady:function(){
+  onReady: function () {
     this.onLoad()
   },
-  
-onShow: function(){
-  this.onLoad();
-}
-,
+
+  onShow: function () {
+    this.onLoad();
+  },
 
 
   onPullDownRefresh: function ()
@@ -182,118 +135,19 @@ onShow: function(){
 
     var that = this
 
-    wx.cloud.database().collection("pinglun").where({
-      _id:'617ef50c61f033bc0068371a32b9c795'
+    wx.cloud.database().collection("tuwenxinxi").where({
+      sort: '相约学习',
     }).get({
       success(res) {
-        console.log('成功啦啦啦阿拉拉拉')
-        console.log(res)
+        console.log("请求云函数成功噜啦噜啦嘞绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿", res)
         that.setData({
-          lunbo: res.data[0].imgurl
-
+          tuwenxinxi: res.data.reverse(),
         })
-
       },
       fail(err) {
-
+        return err
       }
     })
-
-
-
-    // var myDate = new Date();
-    // console.log('当前时间' + myDate.toLocaleTimeString())
-    // console.log('当前日期' + myDate.toLocaleDateString())
-    // this.setData({
-    //   currentdata:  myDate.toLocaleDateString()
-    // })
-
-    // console.log('今天的日期是'+this.data.currentdata)
-    // if(this.data.currentdata>'2022/1/23'){
-    //   this.setData({
-    //     xianshi:true
-    //   })
-    //   console.log(this.data.xianshi)
-    // }
-    // else{console.log('还没到时间')}
-    var time = util.formatTime(new Date());
-    // 再通过setData更改Page()里面的data，动态更新页面的数据
-    this.setData({
-      time: time
-    });
-    console.log(time)
-  if(time>'2022/01/22 16:18:44'){
-      this.setData({
-        xianshi:true
-      })
-      console.log(this.data.xianshi)
-    }
-    else{console.log('还没到时间')}
- 
-
-    // var that=this
-    // DB.get({
-
-    //   success(res){
-
-    //     console.log(res)
-    //     console.log(that.data.tuwenxinxi)
-    //     that.data.tuwenxinxi=res.data
-    //     console.log(res)
-    //     console.log(that.data.tuwenxinxi)
-
-
-    //     that.setData(
-    //       {
-    //         tuwenxinxi:res.data.reverse(),
-
-
-    //       },
-
-    //     );
-
-    //   }
-
-
-
-    // })
-
-   
-    wx.cloud.callFunction({
-      name: "getList",
-      success(res) {
-        console.log("请求云函数成功", res)
-        that.setData({
-          tuwenxinxi: res.result.data.reverse(),
-        })
-      },
-      fail(res) {
-        console.log("请求云函数失败", res)
-      }
-
-    })
-
-    wx.cloud.callFunction({
-      name: "getListshipin",
-      success(res) {
-        console.log("请求云函数成功", res)
-        that.setData({
-          shipinxinxi: res.result.data.reverse(),
-        })
-      },
-      fail(res) {
-        console.log("请求云函数失败", res)
-      }
-
-    })
-
-
-
-
-
-
-
-
 
 
 
@@ -313,25 +167,7 @@ onShow: function(){
     })
 
   },
-  shuaxin: function (options) {
 
-    var that = this
-    DB.get({
-
-      success(res) {
-
-        console.log(res)
-        console.log(that.data.tuwenxinxi)
-        that.data.tuwenxinxi = res.data
-        console.log(res)
-        console.log(that.data.tuwenxinxi)
-
-      }
-
-
-    })
-
-  },
   fabu: function () {
     console.log('gggg');
     // wx.navigateTo({
@@ -344,26 +180,10 @@ onShow: function(){
       }
     })
   },
-  switchNav: function (e) {
-    console.log(e);
-    var page = this;
-    var id = e.target.id;
-    if (this.data.currentTab == id) {
-      return false;
-    } else {
-      page.setData({
-        currentTab: id
-      });
-    }
-    page.setData({
-      flag: id
-    });
-  },
+
   onShareAppMessage: function () {
     return {
-      title: '糗事百科',
-      desc: '这里有搞笑的娱乐段子',
-      path: '/index/index'
+
     }
   },
   lower() {

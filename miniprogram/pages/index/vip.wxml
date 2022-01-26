@@ -61,7 +61,7 @@
     <!-- xianshi2已经置为FALSE -->
     <scroll-view wx:if="{{xianshi2}}" scroll-x class="sort-nav" scroll-with-animation enable-flex="true">
         <view class="sort-nav-item" wx:for="{{sortList}}" wx:key="index">
-            <image class="sort-nav-icon" src="{{item.icon}}" mode="widthFix" lazy-load="false"></image>
+            <image class="sort-nav-icon" src="{{item.icon}}" mode="widthFix" lazy-load="false" bindtap="tiaozhuan{{index}}"></image>
             <text class="sort-nav-text">{{item.text}}</text>
             <image class="down-selected" src="../../images/sort/dwon.png"></image>
         </view>
