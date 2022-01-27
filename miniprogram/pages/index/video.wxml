@@ -1,18 +1,18 @@
 <scroll-view wx:if="{{xianshi2}}" current="{{currentTab}}" scroll-y="true" style="height: 100%;">
 
-  <block wx:for="{{shipinxinxi}}">
+  <block  wx:for="{{shipinxinxi}}" id="{{item._id}}">
 
-    <view class="head">
+    <view   class="head">
       <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
         <image class="avatar xl round bg-gray" src="{{item.imgurl}}"></image>
       </view>
       <view class="title">{{item.name}}</view>
     </view>
 
-    <view class="section">
+    <view   class="section">
       <video style="width:320px" id="myVideo1" src="{{item.vidieourl}}" controls></video>
     </view>
-    <view class="sta">赞同9362 · 评论320 · 分享 136</view>
+    <view   id="{{item._id}}" bindtap="pinglun2" class="sta">点击查看详情页面</view>
     <view style="height: 6px;background-color: #cccccc;opacity: 0.2;"></view>
   </block>
 

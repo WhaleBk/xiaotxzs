@@ -90,6 +90,25 @@ Page({
     })
    
   },
+
+  pinglun2(e){
+    
+ 
+    wx.navigateTo({
+      url: '../../pages/pinglun2/pinglun2',
+      events:{         
+        dataname2:function(data){           
+           console.log(data)         
+          }      
+            },      
+            //关键部分！！！在回调函数中运用.eventChannel.emit('参数名称', {data:参数值})即可将此参数传到要转到的页面
+            success: function (res) {       
+               res.eventChannel.emit('dataname1', {data:e.currentTarget.id})    
+            }    
+  
+    })
+   
+  },
   tiaozhuan7(){
     wx.navigateTo({
       url: '../qsfx/qsfx',

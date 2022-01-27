@@ -1,0 +1,65 @@
+<scroll-view wx:if="{{xianshi2}}" current="{{currentTab}}" scroll-y="true" style="height: 100%;">
+
+  <block wx:for="{{shipinxinxi}}" id="{{item._id}}" bindtap="pinglun2">
+
+    <view class="head">
+      <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
+        <image class="avatar xl round bg-gray" src="{{item.imgurl}}"></image>
+      </view>
+      <view class="title">{{item.name}}</view>
+    </view>
+
+    <view class="section">
+      <video style="width:320px" id="myVideo1" src="{{item.vidieourl}}" controls></video>
+    </view>
+    <view class="sta">
+      <image style="width: 60px;height: 60px;" bindtap="dianzan" src="{{dianzan==false ? 'cloud://cloud1-0gp38h6r13a7a504.636c-cloud1-0gp38h6r13a7a504-1309397363/好评.png' : 'cloud://cloud1-0gp38h6r13a7a504.636c-cloud1-0gp38h6r13a7a504-1309397363/已点赞.png'}}"></image>
+    </view>
+
+    <view class="sta">赞同{{dianzanshu.length}} · 评论{{pinglundexinxi.length}} · 分享 999</view>
+
+    <view style="height: 6px;background-color: #cccccc;opacity: 0.2;"></view>
+  </block>
+
+
+
+</scroll-view>
+
+
+
+
+  <!-- 评论功能 -->
+  <view wx:if="{{xianshi2}}" class="view-contain-ti">
+        <text style="padding-top: -3px;" class="text-ti">评论</text>
+        <textarea autofocus maxlength='2000' auto-height='{{true}}' bindtap="test00" model:value="{{pingyuValue}}" class="input1" placeholder="请输入您想表达的内容"></textarea>
+        
+    </view>
+    <button wx:if="{{xianshi2}}" bindtap="shangchuan" style="color: yellowgreen; padding-right: 0px;">发送</button>
+
+
+
+    <!-- 评论展示 -->
+
+   <block wx:if="{{xianshi2}}" wx:for="{{pinglundexinxi}}">
+
+    <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
+        <image class="avatar xl round bg-gray" src="{{item.touxiang}}"></image>
+    </view>
+    <view class="title">{{item.name}}</view>
+
+
+
+    <view class="view-contain-ti">
+        
+        <text style="padding-top: -30px;  padding-right: 3px ;" class="text-ti">{{item.shijian}}</text>
+        <textarea autofocus maxlength='2000' auto-height='{{true}}'   class="input1" value="{{item.content}}"></textarea>
+       
+    </view>
+
+
+
+   </block>
+
+
+
+<view style="text-align: center;">更多功能，敬请期待</view>

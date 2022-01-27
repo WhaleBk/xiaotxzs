@@ -38,7 +38,7 @@
             </scroll-view>
 
             <view class="sta">
-                <image style="width: 60px;height: 60px;" bindtap="dianzan" src="{{dianzan==false ? '../../images/icon/好评.png' : '../../images/icon/已点赞.png'}}"></image>
+                <image style="width: 60px;height: 60px;" bindtap="dianzan" src="{{dianzan==false ? 'cloud://cloud1-0gp38h6r13a7a504.636c-cloud1-0gp38h6r13a7a504-1309397363/好评.png' : 'cloud://cloud1-0gp38h6r13a7a504.636c-cloud1-0gp38h6r13a7a504-1309397363/已点赞.png'}}"></image>
             </view>
 
         <view class="sta">赞同{{dianzanshu.length}} · 评论{{pinglundexinxi.length}} · 分享 999</view>

@@ -1,6 +1,8 @@
-const DB = wx.cloud.database().collection("tuwenxinxi")
+const DB = wx.cloud.database().collection("shipinxinxi")
 
 var util = require('../../utils/util.js');
+var lunbo=[];
+
 
 var pinglunid22
 var myopenid22
@@ -9,7 +11,6 @@ var myopenid22
 Page({
   data: {
     zanleshu: 0,
-    zhucexinxi:'',
     myopenid: '',
     dianzanshu: 0,
     dianzan: false,
@@ -23,44 +24,9 @@ Page({
     currentTab: 0,
     currentdata: '',
     flag: 0,
-    sortList: [{
-      icon: "../../images/sort/news.png",
-      sortid: 1,
-      text: "重要通知"
-    }, {
-      icon: "../../images/sort/second-hand.png",
-      sortid: 2,
-      text: "闲置交易"
-    }, {
-      icon: "../../images/sort/love-mood.png",
-      sortid: 3,
-      text: "表白交友"
-    }, {
-      icon: "../../images/sort/question-ask.png",
-      sortid: 4,
-      text: "疑问互答"
-    }, {
-      icon: "../../images/sort/part-time-job.png",
-      sortid: 5,
-      text: "任务兼职"
-    }, {
-      icon: "../../images/sort/study.png",
-      sortid: 6,
-      text: "相约学习"
-    }, {
-      icon: "../../images/sort/found.png",
-      sortid: 7,
-      text: "失物招领"
-    }, {
-      icon: "../../images/sort/other.png",
-      sortid: 8,
-      text: "趣事分享"
-    }, ],
-
 
 
     tuwenxinxi: [],
-    imgurl: [],
     shipinxinxi: [{
       vidieourl: "http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
     }, {
@@ -82,9 +48,62 @@ Page({
 
 
   },
+ 
 
 
+  shangchuan() {
+    var myDate = new Date();
+
+
+    setTimeout(() => {
+      if (true) {
+        const content = this.data.pingyuValue
+        const db = wx.cloud.database()
+        console.log('开始传向数据库');
+
+        db.collection('pinglun').add({
+            data: {
+              name: this.data.yonghuxinxi[0].name,
+              touxiang: this.data.yonghuxinxi[0].imgurl,
+              id2: pinglunid22,
+              content: this.data.pingyuValue,
+              shijian: myDate.toLocaleTimeString()
+            }
+          })
+          .then(result => {
+            console.log("数据库写入成功", result)
+
+          })
+          .catch(err => {
+            console.error("数据库写入失败", err)
+          })
+
+      } else {
+
+      }
+
+    }, 1000);
+
+    setTimeout(() => {
+
+      wx.showToast({
+        title: '发送成功',
+        icon: 'success',
+        duration: 2000
+      })
+    
+
+    }, 1000);
+   
+    wx.navigateBack({
+      delta: 1
+    })
+
+  },
   //下拉刷新
+
+
+
 
   onPullDownRefresh: function ()
 
@@ -160,97 +179,6 @@ Page({
 
 
   },
-  previewImage2: function (e) {
-
-    var current = [];
-    current[0] = e.target.id
-
-    wx.previewImage({
-      current: current, // 当前显示图片的http链接
-      urls: this.data.tuwenxinxi[0].imgurl, // 需要预览的图片http链接列表
-    })
-  },
-
-
-  shangchuan() {
-    var myDate = new Date();
-
-
-    setTimeout(() => {
-      if (true) {
-        const content = this.data.pingyuValue
-        const db = wx.cloud.database()
-        console.log('开始传向数据库');
-
-        db.collection('pinglun').add({
-            data: {
-              name: this.data.yonghuxinxi[0].name,
-              touxiang: this.data.yonghuxinxi[0].imgurl,
-              id2: pinglunid22,
-              content: this.data.pingyuValue,
-              shijian: myDate.toLocaleTimeString()
-            }
-          })
-          .then(result => {
-            console.log("数据库写入成功", result)
-
-          })
-          .catch(err => {
-            console.error("数据库写入失败", err)
-          })
-
-      } else {
-
-      }
-
-    }, 1000);
-
-
-
-    setTimeout(() => {
-
-
-      wx.showToast({
-        title: '发送成功',
-        icon: 'success',
-        duration: 2000
-      })
-     
-
-    }, 1000);
-    wx.navigateBack({
-      delta: 1
-    })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  },
   onReady: function () {
     this.onLoad()
   },
@@ -264,7 +192,7 @@ Page({
 
 
     var that = this
-    that.data.tuwenxinxi = []
+    that.data.shipinxinxi = []
 
     //创建获取对象
     const event = this.getOpenerEventChannel()
@@ -278,12 +206,12 @@ Page({
 
 
     })
-    wx.cloud.database().collection("tuwenxinxi").where({
+    wx.cloud.database().collection("shipinxinxi").where({
       _id: pinglunid22
     }).get({
       success(res) {
         that.setData({
-          tuwenxinxi: res.data,
+          shipinxinxi: res.data,
         })
 
       },
@@ -444,19 +372,15 @@ Page({
 
 
 
-
-
-
   },
 
 
 
 
 
-
-
+ 
   lower() {
-
+    console.log('hhh')
     wx.stopPullDownRefresh();
   }
 })
