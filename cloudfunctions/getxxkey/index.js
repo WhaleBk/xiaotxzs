@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
   var openid = wxContext.OPENID
 
   return cloud.database().collection("yonghu").where({
-    _openid: 'ouTH45Gl2hskARZkGR8d6RHRa-jc',
+    _id: '41ae62ef61efde7c005bc92721531921',
   }).get({
     success(res) {
       return res
