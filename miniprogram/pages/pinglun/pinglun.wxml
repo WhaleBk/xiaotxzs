@@ -5,7 +5,7 @@
 
     <!-- 图文信息发布 -->
 
-    <block wx:for="{{tuwenxinxi}}">
+    <block wx:if="{{xianshi2}}"  wx:for="{{tuwenxinxi}}">
         <view id="{{item._id}}" class="item">
 
             <view class="head">
@@ -23,22 +23,25 @@
             </view>
 
 
-            <scroll-view scroll-x class="sort-nav2" scroll-with-animation enable-flex="true">
-                <view>
-                    <image style="margin: 3px;" src="{{item.imgurl[0]}}" mode="widthFix" lazy-load="false"></image>
-                    <image style="margin: 3px;" src="{{item.imgurl[1]}}" mode="widthFix" lazy-load="false"></image>
-                    <image style="margin: 3px;" src="{{item.imgurl[2]}}" mode="widthFix" lazy-load="false"></image>
-                    <image style="margin: 3px;" src="{{item.imgurl[3]}}" mode="widthFix" lazy-load="false"></image>
-                    <image style="margin: 3px;" src="{{item.imgurl[4]}}" mode="widthFix" lazy-load="false"></image>
-                    <image style="margin: 3px;" src="{{item.imgurl[5]}}" mode="widthFix" lazy-load="false"></image>
-                    <image style="margin: 3px;" src="{{item.imgurl[6]}}" mode="widthFix" lazy-load="false"></image>
-                    <image style="margin: 3px;" src="{{item.imgurl[7]}}" mode="widthFix" lazy-load="false"></image>
-                    <image style="margin: 3px;" src="{{item.imgurl[8]}}" mode="widthFix" lazy-load="false"></image>
+            <scroll-view  scroll-x class="sort-nav2" scroll-with-animation enable-flex="true">
+                <view bindtap="previewImage2" >
+                    <image  style="margin: 3px;" id="{{item.imgurl[0]}}" src="{{item.imgurl[0]}}" mode="widthFix" lazy-load="false"></image>
+                    <image  style="margin: 3px;"  id="{{item.imgurl[1]}}"  src="{{item.imgurl[1]}}" mode="widthFix" lazy-load="false"></image>
+                    <image  style="margin: 3px;"  id="{{item.imgurl[2]}}"  src="{{item.imgurl[2]}}" mode="widthFix" lazy-load="false"></image>
+                    <image style="margin: 3px;"  id="{{item.imgurl[3]}}"  src="{{item.imgurl[3]}}" mode="widthFix" lazy-load="false"></image>
+                    <image  style="margin: 3px;"  id="{{item.imgurl[4]}}"  src="{{item.imgurl[4]}}" mode="widthFix" lazy-load="false"></image>
+                    <image  style="margin: 3px;" id="{{item.imgurl[5]}}"  src="{{item.imgurl[5]}}" mode="widthFix" lazy-load="false"></image>
+                    <image  style="margin: 3px;" id="{{item.imgurl[6]}}"  src="{{item.imgurl[6]}}" mode="widthFix" lazy-load="false"></image>
+                    <image style="margin: 3px;" id="{{item.imgurl[7]}}"  src="{{item.imgurl[7]}}" mode="widthFix" lazy-load="false"></image>
+                    <image  style="margin: 3px;" id="{{item.imgurl[8]}}"  src="{{item.imgurl[8]}}" mode="widthFix" lazy-load="false"></image>
                 </view>
             </scroll-view>
 
+            <view class="sta">
+                <image style="width: 60px;height: 60px;" bindtap="dianzan" src="{{dianzan==false ? '../../images/icon/好评.png' : '../../images/icon/已点赞.png'}}"></image>
+            </view>
 
-            <view class="sta">赞同9362 · 评论320 · 分享 136</view>
+        <view class="sta">赞同{{dianzanshu.length}} · 评论{{pinglundexinxi.length}} · 分享 999</view>
 
 
 
@@ -54,18 +57,18 @@
 
 
     <!-- 评论功能 -->
-    <view class="view-contain-ti">
+    <view wx:if="{{xianshi2}}" class="view-contain-ti">
         <text style="padding-top: -3px;" class="text-ti">评论</text>
         <textarea autofocus maxlength='2000' auto-height='{{true}}' bindtap="test00" model:value="{{pingyuValue}}" class="input1" placeholder="请输入您想表达的内容"></textarea>
         
     </view>
-    <button bindtap="shangchuan" style="color: yellowgreen; padding-right: 0px;">发送</button>
+    <button wx:if="{{xianshi2}}" bindtap="shangchuan" style="color: yellowgreen; padding-right: 0px;">发送</button>
 
 
 
     <!-- 评论展示 -->
 
-   <block wx:for="{{pinglundexinxi}}">
+   <block wx:if="{{xianshi2}}" wx:for="{{pinglundexinxi}}">
 
     <view class="avatar xl round bg-gray" wx:if="{{!user.USER_PIC}}" catchtap="url" data-url="/pages/reg/reg_step1">
         <image class="avatar xl round bg-gray" src="{{item.touxiang}}"></image>
@@ -84,6 +87,12 @@
 
 
    </block>
+
+
+
+
+   
+<view style="text-align: center;">更多功能，敬请期待</view>
 
 
 

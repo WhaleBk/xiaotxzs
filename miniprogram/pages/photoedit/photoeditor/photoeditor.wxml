@@ -12,5 +12,5 @@
       <image src="{{item.image}}" mode="aspectFit"></image>
     </swiper-item>
   </swiper>
-  <button class="scene-button" type="primary" bindtap="onSave">点击保存</button>
+  <button class="scene-button" type="primary" bindtap="onSave">保存本地</button>
 </view>

@@ -2,7 +2,7 @@
 
 
     <!-- 轮播图 -->
-    <view class="bbs-swiper-container" style="margin-top: 30px;">
+    <view wx:if="{{xianshi2}}" class="bbs-swiper-container" style="margin-top: 30px;">
         <swiper class="bbs-swiper" autoplay="true" circular="true" interval="3000" easing-function="easeOutCubic" current="{{swiperCurrent}}" bindchange="swiperChange">
             <!-- 轮播图图片 -->
             <swiper-item class="bbs-swiper-item" wx:for="{{lunbo}}" wx:key="index">
@@ -25,7 +25,7 @@
 
 
  <!-- xianshi2已经置为FALSE -->
-    <view class="mess_sort">
+    <view wx:if="{{xianshi2}}" class="mess_sort">
         <!-- 实时留言 -->
         <view class="leave-message">
             <image  bindtap="fabu" class="message-image" src="../../images/sort/message.png"></image>
@@ -98,7 +98,7 @@
             </view>
            
       
-            <scroll-view scroll-x class="sort-nav2" scroll-with-animation enable-flex="true" >
+            <scroll-view wx:if="{{item.imgurl.length>0}}" scroll-x class="sort-nav2" scroll-with-animation enable-flex="true" >
                 <view>
                     <image style="margin: 3px;" src="{{item.imgurl[0]}}" mode="widthFix" lazy-load="false"></image> 
                     <image style="margin: 3px;" src="{{item.imgurl[1]}}" mode="widthFix" lazy-load="false"></image>        
@@ -113,7 +113,7 @@
             </scroll-view>
 
 
-            <view class="sta">赞同9362 · 评论320 · 分享 136</view>
+            <view class="sta">点击查看详情页面</view>
 
 
 

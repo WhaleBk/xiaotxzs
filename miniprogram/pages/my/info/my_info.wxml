@@ -1,4 +1,4 @@
-<scroll-view current="{{currentTab}}" scroll-y="true" style="height: 100%;" bindscrolltolower="lower">
+<scroll-view wx:if="{{xianshi2}}" current="{{currentTab}}" scroll-y="true" style="height: 100%;" bindscrolltolower="lower">
 
 <!-- 图文信息发布 -->
 
@@ -51,3 +51,5 @@
 
 
 </scroll-view>
+
+<view style="text-align: center;">更多功能，敬请期待</view>

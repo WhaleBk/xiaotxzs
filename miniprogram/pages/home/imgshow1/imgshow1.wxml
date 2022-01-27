@@ -1,5 +1,5 @@
 <!--pages/home/imgshow/imgshow.wxml-->
-<button bindtap="CUImage1">选择图片并上传</button>
+<button wx:if="{{xianshi2}}" bindtap="CUImage1">选择图片并上传</button>
 <view id="imgsection">
   <view class="imglist">
     <block wx:for="{{xiangce1}}"  wx:key="*this">

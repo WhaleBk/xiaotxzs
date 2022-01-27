@@ -73,8 +73,7 @@ Page({
 
   },
   pinglun(e) {
-    console.log('嗯嗯嗯嗯呢恩')
-    console.log(e.currentTarget.id)
+   
 
     wx.navigateTo({
       url: '../../pages/pinglun/pinglun',

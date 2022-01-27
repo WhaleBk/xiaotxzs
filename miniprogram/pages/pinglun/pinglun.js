@@ -3,9 +3,15 @@ const DB = wx.cloud.database().collection("tuwenxinxi")
 var util = require('../../utils/util.js');
 
 var pinglunid22
+var myopenid22
+
 
 Page({
   data: {
+    zanleshu: 0,
+    myopenid: '',
+    dianzanshu: 0,
+    dianzan: false,
     yonghuxinxi: [],
     pingyuValue: '',
     pinglundexinxi: '',
@@ -53,6 +59,7 @@ Page({
 
 
     tuwenxinxi: [],
+    imgurl: [],
     shipinxinxi: [{
       vidieourl: "http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
     }, {
@@ -97,7 +104,73 @@ Page({
       }, 1500);
 
   },
- 
+  dianzan() {
+
+    this.setData({
+      dianzan: !this.data.dianzan
+
+    });
+    if (this.data.dianzan == true) {
+
+      let that = this
+      wx.cloud.database().collection('dianzan').add({
+        data: {
+          tiezideid: pinglunid22,
+          zanle: this.data.dianzan
+        },
+        success(result) {
+          that.data.dianzanshu.push('hhh')
+          that.setData({
+            dianzanshu:that.data.dianzanshu
+
+
+          });
+          wx.showToast({
+            title: '成功点赞',
+          })
+        }
+
+      })
+
+
+
+
+
+    }
+    if (this.data.dianzan != true) {
+
+      wx.cloud.database().collection('dianzan').where({
+          tiezideid: pinglunid22,
+          _openid: this.data.myopenid
+        }).remove()
+        .then(res => {
+          this.setData({
+            dianzanshu:this.data.dianzanshu.slice(0,this.data.dianzanshu.length-1)
+
+          });
+          wx.showToast({
+            title: '取消点赞',
+          })
+        })
+    }
+
+
+
+
+
+  },
+  previewImage2: function (e) {
+
+    var current = [];
+    current[0] = e.target.id
+
+    wx.previewImage({
+      current: current, // 当前显示图片的http链接
+      urls: this.data.tuwenxinxi[0].imgurl, // 需要预览的图片http链接列表
+    })
+  },
+
+
   shangchuan() {
     var myDate = new Date();
 
@@ -131,11 +204,11 @@ Page({
 
     }, 1000);
 
-    
-    
+
+
     wx.switchTab({
       url: '../index/index',
-      
+
     })
 
 
@@ -143,13 +216,13 @@ Page({
 
     setTimeout(() => {
 
-      
-    wx.showToast({
-      title: '发布成功',
-      icon: 'success',
-      duration: 2000
-    })
-      
+
+      wx.showToast({
+        title: '发布成功',
+        icon: 'success',
+        duration: 2000
+      })
+
     }, 1000);
 
 
@@ -181,19 +254,20 @@ Page({
 
 
   },
-  onReady:function(){
+  onReady: function () {
     this.onLoad()
   },
-  
-onShow: function(){
-  this.onLoad();
-}
-,
+
+  onShow: function () {
+    this.onLoad();
+  },
   onLoad: function (options) {
-  
+
+
 
 
     var that = this
+    that.data.tuwenxinxi = []
 
     //创建获取对象
     const event = this.getOpenerEventChannel()
@@ -202,18 +276,17 @@ onShow: function(){
 
     event.on('dataname1', function (data) {
 
-      pinglunid22=data.data
-      
+      pinglunid22 = data.data
+
 
 
     })
     wx.cloud.database().collection("tuwenxinxi").where({
-      _id:pinglunid22
+      _id: pinglunid22
     }).get({
       success(res) {
         that.setData({
           tuwenxinxi: res.data,
-
         })
 
       },
@@ -221,8 +294,58 @@ onShow: function(){
 
       }
     })
+    //获取myopenid
+    wx.cloud.database().collection("tuwenxinxi").where({
+      _id: pinglunid22
+    }).get({
+      success(res) {
+        that.setData({
+          myopenid: res.data[0]._openid,
+        })
+        myopenid22 = that.data.myopenid
+
+
+
+      },
+      fail(err) {
+
+      }
+    })
+
+
+
+
+    //获取点赞状态
+    wx.cloud.database().collection("dianzan").where({
+      tiezideid: pinglunid22,
+      _openid: myopenid22
+    }).get({
+      success(res) {
+        console.log('红红火火恍恍惚惚或或或或或或或或或或或或或或或或或或或')
+        console.log(that.data.myopenid)
+        console.log(res)
+        that.setData({
+          dianzan: res.data[0].zanle,
+        })
+
+        console.log(that.data.myopenid)
+
+      },
+      fail(err) {
+
+      }
+    })
+
+
+
+
+
+
+
+
+
     wx.cloud.database().collection("pinglun").where({
-      id2:pinglunid22
+      id2: pinglunid22
     }).get({
       success(res) {
         that.setData({
@@ -253,18 +376,15 @@ onShow: function(){
 
 
 
-
-
     wx.cloud.callFunction({
       name: "getList2",
       success(res) {
-        console.log("请求云函数成功", res)
+
         that.setData({
           yonghuxinxi: res.result.data
         })
-        console.log('ppppp')
-        console.log(that.data.yonghuxinxi)
-        console.log(res.result.data)
+
+
       },
       fail(res) {
         console.log("请求云函数失败", res)
@@ -273,28 +393,6 @@ onShow: function(){
     })
 
 
-    // wx.cloud.callFunction({
-    //   name: "getListpinglun",
-    //   success(res) {
-    //     console.log("请求云函数成功", res)
-    //     that.setData({
-    //       pinglundexinxi: res.result.data.reverse()
-    //     })
-    //     console.log('ppppp')
-    //     console.log(that.data.yonghuxinxi)
-    //     console.log(res.result.data)
-    //   },
-    //   fail(res) {
-    //     console.log("请求云函数失败", res)
-    //   }
-
-    // })
-
-
-
-
-
-    console.log(that.data.pinglunid)
 
 
     // 加载特定id的评论页面
@@ -314,11 +412,11 @@ onShow: function(){
     wx.cloud.callFunction({
       name: "getxxkey",
       success(res) {
-        // console.log("请求云函数成功", res)
+
         that.setData({
           xianshi2: res.result.data[0].name,
         })
-        // console.log(that.data.xianshi2)
+
       },
       fail(res) {
         console.log("请求云函数失败", res)
@@ -328,8 +426,24 @@ onShow: function(){
 
 
 
-   
-    
+
+
+
+    wx.cloud.database().collection("dianzan").where({
+      tiezideid: pinglunid22
+    }).get({
+      success(res) {
+
+        that.setData({
+          dianzanshu: res.data,
+
+        })
+
+      },
+      fail(err) {
+
+      }
+    })
 
 
 
@@ -338,11 +452,11 @@ onShow: function(){
 
 
 
-  
 
-  
+
+
   lower() {
-    console.log('hhh')
+
     wx.stopPullDownRefresh();
   }
 })

@@ -90,7 +90,7 @@ CUImage7() {
   /**
    * 页面的初始数据
    */
-  data: {
+  data: { xianshi2:'false',
     xiangce7:[],
     // image:[
     //   {imgurl:"https://image-1302635214.cos.ap-chengdu.myqcloud.com/image2-1.jpg"},
@@ -112,6 +112,28 @@ CUImage7() {
    */
   onLoad: function (options) {
     let that = this
+
+
+    wx.cloud.callFunction({
+      name: "getxxkey",
+      success(res) {
+      
+        that.setData({
+          xianshi2: res.result.data[0].name,
+        })
+     
+      },
+      fail(res) {
+     
+      }
+
+    })
+
+
+
+
+
+
     wx.cloud.database().collection("xiangce").where({
       name: 'inshow7',
     }).get({
@@ -127,6 +149,8 @@ CUImage7() {
     })
     // this.checkUser()
     // this.getFiles()
+    
+   
   },
 
   /**

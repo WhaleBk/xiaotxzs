@@ -1,4 +1,4 @@
-<scroll-view current="{{currentTab}}" scroll-y="true" style="height: 100%;">
+<scroll-view wx:if="{{xianshi2}}" current="{{currentTab}}" scroll-y="true" style="height: 100%;">
 
   <block wx:for="{{shipinxinxi}}">
 
@@ -19,3 +19,5 @@
 
 
 </scroll-view>
+
+<view style="text-align: center;">更多功能，敬请期待</view>
